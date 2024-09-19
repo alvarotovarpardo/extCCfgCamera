@@ -237,7 +237,7 @@ def write_header_file():
                 for item in sections.get(section_name, []):
                     file.write(f"\t{item}\n")
         
-        file.write("public:\n\textendedCCfgCamGeneral()\n};")
+        file.write("\n\npublic:\n\n};")
         print(f"Properties extracted and saved in {output_file}")
 
 

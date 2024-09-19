@@ -283,6 +283,8 @@ private:
 	int m_iTFrame;
 	int m_iTamVectorData;
 	int m_iWindowSize;
+
+
 public:
-	extendedCCfgCamGeneral()
+
 };

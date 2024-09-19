@@ -4,7 +4,7 @@ sys.path.append(os.path.join(os.getcwd(), 'private'))
 sys.path.append(os.path.join(os.getcwd(), 'public'))
 
 from extCfgCam_properties import processClean, masterAttributes, tableAttributes, readExcel, write_header_file, deleteBuildFolder
-from extCfgCam_methods import extractMethods, mergeHeaders
+from extCfgCam_methods import extractMethods, mergeHeaders, unifyEnums
 
 ################################### PROPIEDADES ##################################################
 
@@ -47,8 +47,8 @@ deleteBuildFolder(deleteFolder)
 
 ################################### MÉTODOS ##################################################
 
-extractMethods()
-
+extractMethods() # Separamos métodos y creamos .h en public para incluirlos más tarde
+unifyEnums() # Separamos los enums para incluirlos de manera unívoca
 
 ################################## MERGE PROPERTIES & METHODS #################################
 

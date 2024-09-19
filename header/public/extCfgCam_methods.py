@@ -116,8 +116,10 @@ def extractMethods():
     print(f"Methods extracted and saved in {output_file}")
 
 def unifyEnums():
-    input_file = os.path.join(os.getcwd(),'enums.txt')
-    output_file = os.path.join(os.getcwd(),'unified_enums.txt')
+    input_file = os.path.join(os.getcwd(),'public\\enums.txt')
+    output_file = os.path.join(os.getcwd(),'public\\unified_enums.txt')
+    methods_file = os.path.join(os.getcwd(), 'public\\extCfgCam_methods.h')
+    
     enums = defaultdict(set)
 
     with open(input_file, 'r') as f:
@@ -133,9 +135,16 @@ def unifyEnums():
     # Escribir enums unificados al archivo de salida
     with open(output_file, 'w') as f:
         for enum_name, values in enums.items():
-            f.write(f'enum {enum_name} {{ {", ".join(sorted(values))} }};\n')
+            f.write(f'\tenum {enum_name} {{ {", ".join(sorted(values))} }};\n')
 
     print(f'Merged enums written to {output_file}')
+    
+    with open(methods_file, 'r') as text:
+        copy_methods = text.read()
+    with open(output_file, 'r') as text:
+        copy_enums = text.read()
+    with open(methods_file,'w') as text:
+        text.write(copy_enums + copy_methods)
 
 
 
