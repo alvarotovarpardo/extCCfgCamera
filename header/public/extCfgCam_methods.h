@@ -1,8 +1,3 @@
-	enum EnumConfigConnectionMode { CONFIG_CAM_CMODE_NONE, CONFIG_CAM_CMODE_OPENCV, CONFIG_CAM_CMODE_VIDEOINPUT, CONFIG_CAM_CMODE_PLEORA, CONFIG_CAM_CMODE_SIMULATE, CONFIG_CAM_CMODE_CCTV, CONFIG_CAM_CMODE_EYECGAS, CONFIG_CAM_CMODE_SIMULATE_EYECGAS, CONFIG_CAM_CMODE_FLIR_ATLAS, CONFIG_CAM_CMODE_FLIR_SPINNAKER, CONFIG_CAM_CMODE_SIMULATE_FLIR, CONFIG_CAM_CMODE_SMART, CONFIG_CAM_CMODE_ARAVIS, CONFIG_CAM_CMODE_PCO};
-	enum EnumConfigCameraType { CONFIG_CAM_TYPE_NONE, CONFIG_CAM_TYPE_THERMAL, CONFIG_CAM_TYPE_VISIBLE };
-	enum EnumConfigSensorType { CONFIG_SENSOR_VOXI, CONFIG_SENSOR_PELICAN, CONFIG_SENSOR_PICO640, CONFIG_SENSOR_FREJA, CONFIG_SENSOR_KINGLET, CONFIG_SENSOR_FASTPELICAN, CONFIG_SENSOR_PICO384, CONFIG_SENSOR_HOTPELICAN, CONFIG_SENSOR_ATTO640, CONFIG_SENSOR_PICO384V2, CONFIG_SENSOR_GUIDE, CONFIG_SENSOR_NONE };
-	enum EnumConfigLaserType { CONFIG_LASER_NONE, CONFIG_LASER_A, CONFIG_LASER_B };
-	enum EnumFocus { FOCUS_AUTO, FOCUS_INCREMENT, FOCUS_DECREMENT };
 	CCfgCamGeneral();
 	virtual ~CCfgCamGeneral();
 	void initDefault();
@@ -309,8 +304,6 @@
 	################## Distributed ###################
 	##################################################
 
-	enum EnumConfigConnectionMode { CONFIG_CAM_CMODE_NONE, CONFIG_CAM_CMODE_OPENCV, CONFIG_CAM_CMODE_VIDEOINPUT, CONFIG_CAM_CMODE_PLEORA, CONFIG_CAM_CMODE_SIMULATE, CONFIG_CAM_CMODE_CCTV, CONFIG_CAM_CMODE_EYECGAS, CONFIG_CAM_CMODE_SIMULATE_EYECGAS, CONFIG_CAM_CMODE_FLIR_ATLAS, CONFIG_CAM_CMODE_FLIR_SPINNAKER, CONFIG_CAM_CMODE_SIMULATE_FLIR, CONFIG_CAM_CMODE_SMART, CONFIG_CAM_CMODE_ARAVIS};
-	enum EnumConfigSensorType { CONFIG_SENSOR_NONE, CONFIG_SENSOR_PELICAN, CONFIG_SENSOR_VOXI, CONFIG_SENSOR_PICO640, CONFIG_SENSOR_GUIDE, CONFIG_SENSOR_FREJA, CONFIG_SENSOR_KINGLET, CONFIG_SENSOR_FASTPELICAN, CONFIG_SENSOR_PICO384, CONFIG_SENSOR_HOTPELICAN, CONFIG_SENSOR_ATTO640 };
 	void setConnectionChain(QString sConnectionChain) { STRCPY(m_szConnectionChain,sConnectionChain.toLatin1().toStdString().c_str()); }
 	void setSerialNumber(QString sSerialNumber) { STRCPY(m_szSerialNumber,sSerialNumber.toStdString().c_str()); }
 	void setLicense(QString sLicense) { STRCPY(m_szLicense, sLicense.toStdString().c_str()); }
@@ -356,8 +349,6 @@
 	#################### Analytics ###################
 	##################################################
 
-	enum EnumConfigConnectionMode { CONFIG_CAM_CMODE_NONE, CONFIG_CAM_CMODE_OPENCV, CONFIG_CAM_CMODE_VIDEOINPUT, CONFIG_CAM_CMODE_PLEORA, CONFIG_CAM_CMODE_SIMULATE, CONFIG_CAM_CMODE_CCTV, CONFIG_CAM_CMODE_DMK, CONFIG_CAM_CMODE_PCO };
-	enum EnumConfigCameraMode { CONFIG_MODE_ETHERNET, CONFIG_MODE_USB, CONFIG_MODE_OTHER };
 	EnumConfigCameraMode getConfigCameraMode() { return m_eConfigCameraMode; }
 	void setConfigCameramode(EnumConfigCameraMode eConfigCameraMode) { m_eConfigCameraMode = eConfigCameraMode; }
 	void setConnectionChain(QString sConnectionChain) { strcpy_s(m_szConnectionChain,sConnectionChain.toStdString().c_str()); }
@@ -462,8 +453,6 @@
 	###################### Lite ######################
 	##################################################
 
-	enum EnumConfigConnectionMode { CONFIG_CAM_CMODE_NONE, CONFIG_CAM_CMODE_OPENCV, CONFIG_CAM_CMODE_VIDEOINPUT, CONFIG_CAM_CMODE_PLEORA, CONFIG_CAM_CMODE_SIMULATE, CONFIG_CAM_CMODE_CCTV, CONFIG_CAM_CMODE_GST };
-	enum EnumConfigSensorType { CONFIG_SENSOR_NONE, CONFIG_SENSOR_PELICAN, CONFIG_SENSOR_FREJA, CONFIG_SENSOR_VOXI, CONFIG_SENSOR_PICO, CONFIG_SENSOR_GUIDE, CONFIG_SENSOR_KINGLET };
 	void setConnectionChain(QString sConnectionChain) { STRCPY(m_szConnectionChain,sConnectionChain.toStdString().c_str()); }
 	int getTamVectorData() { return m_iTamVectorData; }
 	void setTamVectorData(int iTamVectorData) { m_iTamVectorData = iTamVectorData; }
