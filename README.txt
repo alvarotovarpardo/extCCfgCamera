@@ -1,6 +1,6 @@
 #extendedConfigCamera
 
-Este repositorio tiene como objeto la *creación automática de un archivo .h unificado* que contenga todos las propiedades y métodos de las clases CCfgCamGeneral de RL Fix, Distributed, Analytics & Lite, sin repetirse. 
+Este repositorio tiene como objeto la *creación automática de un archivo .h unificado*, extCfgCam.h. que contenga todos las propiedades y métodos de las clases CCfgCamGeneral de RL Fix, Distributed, Analytics & Lite, sin repetirse. 
 
 Para ello *se debe proporcionar*:
  - Una carpeta 'private/private_raw' con las propiedades copiadas y pegadas en los ficheros private_x.txt, con x = fix, distributed, analytics, lite. 
