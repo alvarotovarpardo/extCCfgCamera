@@ -1,2 +1,0 @@
-int m_iMean;
-int m_iSkip;
