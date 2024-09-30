@@ -1,0 +1,5 @@
+char m_szOpticalSize[50];
+char m_szSensitivity[50];
+char m_szTarjetGas[50];
+char m_szUnits[50];
+double m_dCorrectionFactor;

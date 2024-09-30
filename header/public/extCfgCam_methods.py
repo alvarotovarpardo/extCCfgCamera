@@ -3,9 +3,9 @@ import re
 from collections import defaultdict
 
 def extractMethods():
-    input_folder = os.path.join(os.getcwd(), 'public/public_raw')
-    output_file = os.path.join(os.getcwd(), 'public/extCfgCam_methods.h')
-    enum_output = os.path.join(os.getcwd(), 'public/enums.txt')
+    input_folder = os.path.join(os.getcwd(), 'header\\public/public_raw')
+    output_file = os.path.join(os.getcwd(), 'header\\public/extCfgCam_methods.h')
+    enum_output = os.path.join(os.getcwd(), 'header\\public/enums.txt')
     
     methods_fix = []
     methods_distributed = []
@@ -116,9 +116,9 @@ def extractMethods():
     print(f"Methods extracted and saved in {output_file}")
 
 def unifyEnums():
-    input_file = os.path.join(os.getcwd(),'public\\enums.txt')
-    output_file = os.path.join(os.getcwd(),'public\\unified_enums.txt')
-    methods_file = os.path.join(os.getcwd(), 'public\\extCfgCam_methods.h')
+    input_file = os.path.join(os.getcwd(),'header\\public\\enums.txt')
+    output_file = os.path.join(os.getcwd(),'header\\public\\unified_enums.txt')
+    methods_file = os.path.join(os.getcwd(), 'header\\public\\extCfgCam_methods.h')
     
     enums = defaultdict(set)
 
@@ -149,9 +149,9 @@ def unifyEnums():
 
 
 def mergeHeaders():
-    properties_path = os.path.join(os.getcwd(), 'private\\extCfgCam_properties.h')
-    methods_path = os.path.join(os.getcwd(), 'public\\extCfgCam_methods.h')
-    unified_path = os.path.join(os.getcwd(),'extCfgCam.h')
+    properties_path = os.path.join(os.getcwd(), 'header\\private\\extCfgCam_properties.h')
+    methods_path = os.path.join(os.getcwd(), 'header\\public\\extCfgCam_methods.h')
+    unified_path = os.path.join(os.getcwd(),'header\\config_camera.h')
     # Leer el archivo de propiedades
     with open(properties_path, 'r') as properties_file:
         properties_lines = properties_file.readlines()

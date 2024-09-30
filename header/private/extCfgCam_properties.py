@@ -33,7 +33,7 @@ def cleanClass(line):
 
 
 def processClean():
-    source = os.path.join(os.getcwd(),'private')
+    source = os.path.join(os.getcwd(),'header\\private')
     output_folder = os.path.join(source, r'build\private_clean')
     output_folder_names = os.path.join(source, r'build\private_reduced')
     source_folder = os.path.join(source, 'private_raw')
@@ -66,7 +66,7 @@ def processClean():
 
 
 def masterAttributes(sort = True):
-    source = os.path.join(os.getcwd(),'private')
+    source = os.path.join(os.getcwd(),'header\\private')
     if sort:
         source_folder = os.path.join(source, r'build\private_reduced')
         private_sorted_folder = os.path.join(source, r'build\private_sorted')
@@ -105,7 +105,7 @@ def masterAttributes(sort = True):
 
 
 def tableAttributes(sort = True):
-    source = os.path.join(os.getcwd(),'private')
+    source = os.path.join(os.getcwd(),'header\\private')
     all_private_file = os.path.join(source, 'all_private.txt')
     if sort:
         private_reduced_folder = os.path.join(source, r'build\private_reduced')
@@ -160,7 +160,7 @@ def tableAttributes(sort = True):
         
  
 def readExcel():
-    source = os.path.join(os.getcwd(),'private')
+    source = os.path.join(os.getcwd(),'header\\private')
     excel_path = os.path.join(source,'all_private_SWs.xlsx')
     df = pd.read_excel(excel_path, usecols='A:E')
 
@@ -205,7 +205,7 @@ def read_txt_file(file_path):
 
 
 def write_header_file():
-    source = os.path.join(os.getcwd(),'private')
+    source = os.path.join(os.getcwd(),'header\\private')
     programs = ['fix', 'distributed', 'analytics', 'lite']
     input_dir = os.path.join(source, r'build\private_classified')
     output_file = os.path.join(source,'extCfgCam_properties.h')
@@ -218,7 +218,8 @@ def write_header_file():
     flag = 0
     
     with open(output_file, 'w') as file:
-        file.write("class extendedCCfgCamGeneral\n{\nprivate:\n")
+        file.write("#include 'config_base.h'\n\n\n")
+        file.write("class extendedCCfgCamGeneral : public CCfgClass // Change name!!\n{\nprivate:\n")
         
         for r in range(len(programs), 0, -1):  
             for combination in itertools.combinations(programs, r):

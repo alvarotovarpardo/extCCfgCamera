@@ -1,0 +1,6 @@
+int m_iFocalLength;
+int m_iPTLimitPanLeft;
+int m_iPTLimitPanRight;
+int m_iPTLimitTiltBottom;
+int m_iPTLimitTiltTop;
+int m_iPixelPitch;

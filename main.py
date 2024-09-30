@@ -1,8 +1,10 @@
 import sys
 import os
-sys.path.append(os.path.join(os.getcwd(), 'private'))
-sys.path.append(os.path.join(os.getcwd(), 'public'))
-
+import shutil
+sys.path.append(os.path.join(os.getcwd(), 'header\\private'))
+sys.path.append(os.path.join(os.getcwd(), 'header\\public'))
+sys.path.append(os.path.join(os.getcwd(),'initDefault'))
+from extendedInitDefault import copyInitParams, createInit
 from extCfgCam_properties import processClean, masterAttributes, tableAttributes, readExcel, write_header_file, deleteBuildFolder
 from extCfgCam_methods import extractMethods, mergeHeaders, unifyEnums
 
@@ -53,3 +55,43 @@ unifyEnums() # Separamos los enums para incluirlos de manera unívoca
 ################################## MERGE PROPERTIES & METHODS #################################
 
 mergeHeaders()
+
+
+########################## INITIALIZE PARAMS: initDefault() ##################################
+# Rutas a los .cpp de todos los proyectos
+input_files = [
+    r"C:\Users\Projects\sw_redlook_Fix\gui\util\config_camera.cpp",
+    r"C:\Users\Projects\sw_redlook_distributed\gui\util\config_camera.cpp",
+    r"C:\Users\Projects\sw_redlook_analytics\gui\util\config_camera.cpp",
+    r"C:\Users\Projects\sw_redlook_Lite\gui\util\config_camera.cpp"
+]
+
+
+# Llamada a la función para copiar el contenido
+copyInitParams(input_files)
+createInit()
+
+################################# COPY C++ FILES #############################################
+
+# Estaría bien meter todo a la carpeta C_code para no tener que hacerlo a mano.
+current_dir = os.getcwd()
+
+c_folder = os.path.join(current_dir, 'C_code')
+
+header_file = os.path.join(current_dir, 'header\\config_camera.h')
+cpp_file = os.path.join(current_dir, 'initDefault\\config_camera.cpp')
+config_base = os.path.join(current_dir, 'config_base.h')
+
+# Verifica si los archivos existen y realiza la copia
+if os.path.exists(c_folder):
+    if os.path.exists(header_file):
+        shutil.copy(header_file, c_folder)
+        print(f"'{header_file}' copiado a {c_folder}")
+    if os.path.exists(cpp_file):
+        shutil.copy(cpp_file, c_folder)
+        print(f"'{cpp_file}' copiado a {c_folder}")
+    if os.path.exists(config_base):
+        shutil.copy(config_base, c_folder)
+        print(f"'{config_base}' copiado a {c_folder}")
+else:
+    print(f"La carpeta {c_folder} no existe.")

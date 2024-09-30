@@ -40,9 +40,9 @@ def copyInitParams(init_path):
         'init_analytics.txt',
         'init_lite.txt'
     ]
-    output_paths = [os.path.join(os.path.join(os.getcwd(), 'init_raw'), file) for file in files]
-    if not os.path.exists(os.path.join(os.getcwd(), 'init_raw')):
-        os.makedirs(os.path.join(os.getcwd(), 'init_raw'))
+    output_paths = [os.path.join(os.path.join(os.getcwd(), 'initDefault\\init_raw'), file) for file in files]
+    if not os.path.exists(os.path.join(os.getcwd(), 'initDefault\\init_raw')):
+        os.makedirs(os.path.join(os.getcwd(), 'initDefault\\init_raw'))
     for input_path, output_path in zip(init_path, output_paths):
         content = extractInitParams(input_path)
         if content:
@@ -54,10 +54,10 @@ def copyInitParams(init_path):
     
 # Creamos initDefault extendido
 def createInit():
-    fix_path = os.path.join(os.getcwd(), 'init_raw\\init_fix.txt')
-    distributed_path = os.path.join(os.getcwd(), 'init_raw\\init_distributed.txt')
-    analytics_path = os.path.join(os.getcwd(), 'init_raw\\init_analytics.txt')
-    lite_path = os.path.join(os.getcwd(), 'init_raw\\init_lite.txt')
+    fix_path = os.path.join(os.getcwd(), 'initDefault\\init_raw\\init_fix.txt')
+    distributed_path = os.path.join(os.getcwd(), 'initDefault\\init_raw\\init_distributed.txt')
+    analytics_path = os.path.join(os.getcwd(), 'initDefault\\init_raw\\init_analytics.txt')
+    lite_path = os.path.join(os.getcwd(), 'initDefault\\init_raw\\init_lite.txt')
     # Leer los parámetros de los archivos
     fix_params = readParameters(fix_path)
     distributed_params = readParameters(distributed_path)
@@ -70,34 +70,24 @@ def createInit():
     analytics_extended_params = [param for param in analytics_params if param not in fix_params and param not in distributed_params]  
     lite_extended_params = [param for param in lite_params if param not in fix_params and param not in distributed_params and param not in analytics_params]
     
-    output_path = os.path.join(os.getcwd(),'extendedInitDefault.cpp')
+    output_path = os.path.join(os.getcwd(),'initDefault\\config_camera.cpp')
     # Escribir los parámetros únicos en el archivo de salida
     with open(output_path, 'w') as f:
+        f.write("#include 'config_camera.h'\n\n\n")
         f.write('void CCfgCamGeneral::initDefault() // Change name!!\n{\n')
-        f.write("\t//################## Fix ###################\n")
+        f.write("\n\t//################## Fix ###################\n\n")
         for param in fix_extended_params:
-            f.write(param + '\n')
-        f.write("\t//################## Distributed ###################\n")
+            f.write('\t' + param + '\n')
+        f.write("\n\t//################## Distributed ###################\n\n")
         for param in distributed_extended_params:
-            f.write(param + '\n')
-        f.write("\t//################### Analytics ####################\n")    
+            f.write('\t' + param + '\n')
+        f.write("\n\t//################### Analytics ####################\n\n")    
         for param in analytics_extended_params:
-            f.write(param + '\n')            
-        f.write("\t//##################### Lite ######################\n")    
+            f.write('\t' + param + '\n')            
+        f.write("\n\t//##################### Lite ######################\n\n")    
         for param in lite_extended_params:
-            f.write(param + '\n') 
+            f.write('\t' + param + '\n') 
         f.write("}")
     print(f"Archivo {output_path} creado con éxito.")
 
-# Rutas de entrada de los proyectos A, B, C, D
-input_files = [
-    r"C:\Users\Projects\sw_redlook_Fix\gui\util\config_camera.cpp",
-    r"C:\Users\Projects\sw_redlook_distributed\gui\util\config_camera.cpp",
-    r"C:\Users\Projects\sw_redlook_analytics\gui\util\config_camera.cpp",
-    r"C:\Users\Projects\sw_redlook_Lite\gui\util\config_camera.cpp"
-]
 
-
-# Llamada a la función para copiar el contenido
-copyInitParams(input_files)
-createInit()

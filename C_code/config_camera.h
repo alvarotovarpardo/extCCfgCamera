@@ -1,4 +1,7 @@
-class extendedCCfgCamGeneral
+#include 'config_base.h'
+
+
+class extendedCCfgCamGeneral : public CCfgClass // Change name!!
 {
 private:
 
