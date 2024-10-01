@@ -35,6 +35,8 @@ def extractMethods():
         # Copiar el contenido de public_fix.txt directamente al archivo unificado
         with open(output_file, 'w', encoding='utf-8') as output:
             for method in methods_fix:
+                if 'STRCPY' in method:
+                    method = re.sub('STRCPY','strcpy_s', method)
                 output.write('\t' + method + '\n')
             
         with open(enum_output, 'w', encoding='utf-8') as output:
@@ -103,6 +105,8 @@ def extractMethods():
                         output.write('\t###################### Lite ######################\n')
                         output.write('\t##################################################\n\n')
                         flag = 1
+                    if 'STRCPY' in method:
+                        method = re.sub('STRCPY','strcpy_s', method)
                     output.write('\t' + method + '\n')
                     
         with open(enum_output, 'a', encoding='utf-8') as output:

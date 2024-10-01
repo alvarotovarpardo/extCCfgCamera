@@ -16,11 +16,11 @@
     EnumConfigConnectionMode getConnectionMode() { return m_eConfigConnectionMode; }
     void setConnectionMode(EnumConfigConnectionMode eConfigConnectionMode) { m_eConfigConnectionMode = eConfigConnectionMode; }
     char *getConnectionChain() { return m_szConnectionChain; }
-    void setConnectionChain(QString sConnectionChain) { STRCPY(m_szConnectionChain,sConnectionChain.toLatin1().toStdString().c_str()); }
+    void setConnectionChain(QString sConnectionChain) { strcpy_s(m_szConnectionChain,sConnectionChain.toLatin1().toStdString().c_str()); }
     char *getSerialNumber() { return m_szSerialNumber; }
-    void setSerialNumber(QString sSerialNumber) { STRCPY(m_szSerialNumber,sSerialNumber.toStdString().c_str()); }
+    void setSerialNumber(QString sSerialNumber) { strcpy_s(m_szSerialNumber,sSerialNumber.toStdString().c_str()); }
     char *getLicense() { return m_szLicense; }
-    void setLicense(QString sLicense) { STRCPY(m_szLicense, sLicense.toStdString().c_str()); }
+    void setLicense(QString sLicense) { strcpy_s(m_szLicense, sLicense.toStdString().c_str()); }
     int getFps() { return m_iFps; }
     int getTimeSendFps() { return m_iTimeSendFps; }
     int getFpsShow() { return m_iFpsShow; }
@@ -38,7 +38,7 @@
     double getOffsetIfov_x() { return m_dOffsetIfov_x; }
     double getOffsetIfov_y() { return m_dOffsetIfov_y; }
 
-    void setDescription(char *szDescription) { STRCPY(m_szDescription, szDescription); }
+    void setDescription(char *szDescription) { strcpy_s(m_szDescription, szDescription); }
     void setFps(int iFps) { m_iFps = iFps; }
     void setTimeSendFps(int iTimeSendFps) { m_iTimeSendFps = iTimeSendFps; }
     void setFpsShow(int iFpsShow) { m_iFpsShow = iFpsShow; }
@@ -58,9 +58,9 @@
 
     bool getCCTVAccessControl() { return m_bCCTVAccessControl; }
     void setCCTVAccesControl(bool bCCTVAccesControl) { m_bCCTVAccessControl = bCCTVAccesControl; }
-    void setCCTVUsername(char *szCCTVUsername) { STRCPY(m_szCCTVUsername, szCCTVUsername); }
+    void setCCTVUsername(char *szCCTVUsername) { strcpy_s(m_szCCTVUsername, szCCTVUsername); }
     char *getCCTVUsername() { return m_szCCTVUsername; }
-    void setCCTVPassword(char *szCCTVPassword) { STRCPY(m_szCCTVPassword, szCCTVPassword); }
+    void setCCTVPassword(char *szCCTVPassword) { strcpy_s(m_szCCTVPassword, szCCTVPassword); }
     char *getCCTVPassword() { return m_szCCTVPassword;}
 
     EnumConfigCameraType getConfigCameraType() { return m_eConfigCameraType; }
@@ -68,7 +68,7 @@
     EnumConfigSensorType getConfigSensorType() { return m_eConfigSensorType; }
     void setConfigSensorType(EnumConfigSensorType eConfigSensor) { m_eConfigSensorType = eConfigSensor; }
     char *getCameraModelName() { return m_szCameraModelName; }
-    void setCameraModelName(char *sCameraModelName) { STRCPY(m_szCameraModelName,sCameraModelName); }
+    void setCameraModelName(char *sCameraModelName) { strcpy_s(m_szCameraModelName,sCameraModelName); }
     QByteArray getPartNumber() { return m_baPartNumber; }
     void setPartNumber(QByteArray baPartNumber) { m_baPartNumber = baPartNumber; }
     int getMatMetaDataLeft() { return m_iMatMetaDataLeft; }
@@ -144,9 +144,9 @@
     void setFramesSecondRtsp(int iFramesSecondRtsp) { m_iFramesSecondRtsp = iFramesSecondRtsp; }
     bool getRTSPAccessControl() { return m_bRTSPAccessControl; }
     void setRTSPAccesControl(bool bRTSPAccesControl) { m_bRTSPAccessControl = bRTSPAccesControl; }
-    void setRTSPUsername(char *szRTSPUsername) { STRCPY(m_szRTSPUsername, szRTSPUsername); }
+    void setRTSPUsername(char *szRTSPUsername) { strcpy_s(m_szRTSPUsername, szRTSPUsername); }
     char *getRTSPUsername() { return m_szRTSPUsername; }
-    void setRTSPPassword(char *szRTSPPassword) { STRCPY(m_szRTSPPassword, szRTSPPassword); }
+    void setRTSPPassword(char *szRTSPPassword) { strcpy_s(m_szRTSPPassword, szRTSPPassword); }
     const char * getRTSPPassword() { return m_szRTSPPassword; }
     bool getPaletteRtsp() { return m_bPaletteRtsp; }
     void setPaletteRtsp(bool bPaletteRtsp) { m_bPaletteRtsp = bPaletteRtsp; }
@@ -216,7 +216,7 @@
     void setEmailAlert(bool bEmailAlert) { m_bEmailAlert = bEmailAlert; }
     bool getEmailAlert() { return m_bEmailAlert; }
     char *getConnectionPhidget() { return m_szConnectionPhidget; }
-    void setConnectionPhidget(QString sConnectionPhidget) { STRCPY(m_szConnectionPhidget,sConnectionPhidget.toStdString().c_str()); }
+    void setConnectionPhidget(QString sConnectionPhidget) { strcpy_s(m_szConnectionPhidget,sConnectionPhidget.toStdString().c_str()); }
     int getRelayPort() { return m_iRelayPort; }
     void setRelayPort(int iRelayPort) { m_iRelayPort = iRelayPort; }
     int getStepperPort() { return m_iStepperPort; }
@@ -266,7 +266,7 @@
     bool getAdamRelay() { return m_bAdamRelay; }
     void setAdamRelay(bool bAdamRelay) { m_bAdamRelay = bAdamRelay; }
     char *getAdamRelayIP() { return m_szAdamRelayIP; }
-    void setAdamRelayIP(QString sAdamRelayIP) { STRCPY(m_szAdamRelayIP,sAdamRelayIP.toStdString().c_str()); }
+    void setAdamRelayIP(QString sAdamRelayIP) { strcpy_s(m_szAdamRelayIP,sAdamRelayIP.toStdString().c_str()); }
     int getAdamRelayPort() { return m_iAdamRelayPort; }
     void setAdamRelayPort(int iAdamRelayPort) { m_iAdamRelayPort = iAdamRelayPort; }
     int getMaxOperationTemperature() { return m_iMaxOperationTemperature; }
@@ -275,7 +275,7 @@
     bool getSwitchPOE() { return m_bSwitchPOE; }
     void setSwitchPOE(bool bSwitchPOE) { m_bSwitchPOE = bSwitchPOE; }
     char *getSwitchIP() { return m_szSwitchIP; }
-    void setSwitchIP(QString sSwitchIP) { STRCPY(m_szSwitchIP,sSwitchIP.toStdString().c_str()); }
+    void setSwitchIP(QString sSwitchIP) { strcpy_s(m_szSwitchIP,sSwitchIP.toStdString().c_str()); }
     int getSwitchInterface() { return m_iSwitchInterface; }
     void setSwitchInterface(int iSwitchInterface) { m_iSwitchInterface = iSwitchInterface; }
 
@@ -290,13 +290,13 @@
     bool getResetPunctualEnabled() { return m_bResetPunctualEnabled; }
     void setResetPunctualEnabled(bool bStatus) { m_bResetPunctualEnabled = bStatus; }
     char *getResetUnits() { return m_szResetUnits; }
-    void setResetUnits(char *szResetUnits) { STRCPY(m_szResetUnits, szResetUnits); }
+    void setResetUnits(char *szResetUnits) { strcpy_s(m_szResetUnits, szResetUnits); }
     int getResetUnitsValue() { return m_iResetUnitsValue; }
     void setResetUnitsValue(int iResetUnitsValue) { m_iResetUnitsValue = iResetUnitsValue; }
     char *getResetDateTime() { return m_szResetDateTime; }
-    void setResetDateTime(char *szResetDateTime) { STRCPY(m_szResetDateTime, szResetDateTime); }
+    void setResetDateTime(char *szResetDateTime) { strcpy_s(m_szResetDateTime, szResetDateTime); }
     char *getResetPeriodicDateTime() { return m_szResetPeriodicDateTime; }
-    void setResetPeriodicDateTime(char *szResetPeriodicDateTime) { STRCPY(m_szResetPeriodicDateTime, szResetPeriodicDateTime); }
+    void setResetPeriodicDateTime(char *szResetPeriodicDateTime) { strcpy_s(m_szResetPeriodicDateTime, szResetPeriodicDateTime); }
     //************************************************************************************
 
     void setCurrentPreset(int iCurrentPreset) { m_iCurrentPreset = iCurrentPreset; }
@@ -306,13 +306,13 @@
     double getGlobalTemp() { return m_dMediaTemp; }
     void setGlobalTemp(double dTempFever, int numberSamples, int idRoi);
 
-    void setGeolocation(char *sGeolocation) { STRCPY(m_sGeolocation, sGeolocation); }
+    void setGeolocation(char *sGeolocation) { strcpy_s(m_sGeolocation, sGeolocation); }
     char *getGeolocation() { return m_sGeolocation; }
 
     /* Smart camera periodic cleaner */
     void setPeriodicUnitsValue(int iPeriodicUnitsValue) { m_iPeriodicUnitsValue = iPeriodicUnitsValue; }
     int getPeriodicUnitsValue() { return m_iPeriodicUnitsValue; }
-    void setPeriodicUnits(char *sPeriodicUnits) { STRCPY(m_szPeriodicUnits, sPeriodicUnits); }
+    void setPeriodicUnits(char *sPeriodicUnits) { strcpy_s(m_szPeriodicUnits, sPeriodicUnits); }
     char *getPeriodicUnits() { return m_szPeriodicUnits; }
     void setPeriodicPunctual(bool bPeriodicPunctual) { m_bPeriodicPunctual = bPeriodicPunctual; }
     bool getPeriodicPunctual() { return m_bPeriodicPunctual; }
@@ -322,9 +322,9 @@
     bool getPeriodicDeleteAt() { return m_bPeriodicDeleteAt; }
     void setPeriodicDeleteAtActive(bool bPeriodicDeleteAtActive) { m_bPeriodicDeleteAtActive = bPeriodicDeleteAtActive; }
     bool getPeriodicDeleteAtActive() { return m_bPeriodicDeleteAtActive; }
-    void setPeriodicDeleteAtTime(char *sPeriodicDeleteAtTime) { STRCPY(m_szPeriodicDeleteAtTime, sPeriodicDeleteAtTime); }
+    void setPeriodicDeleteAtTime(char *sPeriodicDeleteAtTime) { strcpy_s(m_szPeriodicDeleteAtTime, sPeriodicDeleteAtTime); }
     char *getPeriodicDeleteAtTime() { return m_szPeriodicDeleteAtTime; }
-    void setPeriodicNextCheckTime(char *sNextCheckTime) { STRCPY(m_szNextCheckTime, sNextCheckTime); }
+    void setPeriodicNextCheckTime(char *sNextCheckTime) { strcpy_s(m_szNextCheckTime, sNextCheckTime); }
     char *getPeriodicNextCheckTime() { return m_szNextCheckTime; }
 
         /* PRESET LIMITS */

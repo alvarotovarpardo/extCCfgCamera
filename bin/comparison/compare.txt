@@ -7,7 +7,7 @@ ConfigCameraType // Attribute missing in .CAM
 ConfigConnectionMode // Attribute missing in .CAM
 ConfigLaserType // Attribute missing in .CAM
 ConfigSensorType // Attribute missing in .CAM
-ResetUnits // Numbers differ: PRIVATE [1, 1, 0, 0] vs CAM [1, 1, 1, 0]
+ResetUnits // Numbers differ: PRIVATE [1, 1, 0, 0] vs CAM [1.0, 1.0, 1.0, 0.0]
 CameraMode // Attribute missing in PRIVATE
 CameraType // Attribute missing in PRIVATE
 ConnectionMode // Attribute missing in PRIVATE
@@ -16,4 +16,5 @@ PanAndTiltCOM // Attribute missing in PRIVATE
 PeriodicNextCheck // Attribute missing in PRIVATE
 SensorType // Attribute missing in PRIVATE
 ShowFPSWarnings // Attribute missing in PRIVATE
+nan // Attribute missing in PRIVATE
 GlobalTemp // Attribute missing in PRIVATE

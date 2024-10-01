@@ -123,6 +123,8 @@ def isolatePublic():
                 if line.startswith('private:'):
                     break
                 if flag:
+                    if 'STRCPY' in line:
+                        line = re.sub(r'STRCPY', 'strcpy_s', line)
                     public_content.append(line)
                 if 'public:' in line:
                     flag = True

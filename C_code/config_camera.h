@@ -600,35 +600,16 @@ public:
 	################## Distributed ###################
 	##################################################
 
-	void setConnectionChain(QString sConnectionChain) { STRCPY(m_szConnectionChain,sConnectionChain.toLatin1().toStdString().c_str()); }
-	void setSerialNumber(QString sSerialNumber) { STRCPY(m_szSerialNumber,sSerialNumber.toStdString().c_str()); }
-	void setLicense(QString sLicense) { STRCPY(m_szLicense, sLicense.toStdString().c_str()); }
 	int getFocalLength() { return m_iFocalLength; }
 	int getPixelPitch() { return m_iPixelPitch; }
-	void setDescription(char *szDescription) { STRCPY(m_szDescription, szDescription); }
 	void setFocalLength(int iFocalLength) { m_iFocalLength = iFocalLength; }
 	void setPixelPitch(int iPixelPitch) { m_iPixelPitch = iPixelPitch; }
-	void setCCTVUsername(char *szCCTVUsername) { STRCPY(m_szCCTVUsername, szCCTVUsername); }
-	void setCCTVPassword(char *szCCTVPassword) { STRCPY(m_szCCTVPassword, szCCTVPassword); }
-	void setCameraModelName(char *sCameraModelName) { STRCPY(m_szCameraModelName,sCameraModelName); }
-	void setRTSPUsername(char *szRTSPUsername) { STRCPY(m_szRTSPUsername, szRTSPUsername); }
-	void setRTSPPassword(char *szRTSPPassword) { STRCPY(m_szRTSPPassword, szRTSPPassword); }
 	void setStretchingRegion(bool bStretchingRegion) { m_bStretchingRegion = bStretchingRegion; }
 	void setRegionSize(int iRegionSize) { m_iRegionSize = iRegionSize; }
 	bool getStretchingRegion() { return m_bStretchingRegion; }
 	int getRegionSize() { return m_iRegionSize; }
-	void setConnectionPhidget(QString sConnectionPhidget) { STRCPY(m_szConnectionPhidget,sConnectionPhidget.toStdString().c_str()); }
 	void setTourActiveAutomatic(char * szTour) { STRNCPY(m_szTourActiveAutomatic, szTour,  CFG_MAX_SMALL_ID); }
 	void setPresetActiveAutomatic(char * szPreset) { STRNCPY(m_szPresetActiveAutomatic, szPreset,  CFG_MAX_SMALL_ID); }
-	void setAdamRelayIP(QString sAdamRelayIP) { STRCPY(m_szAdamRelayIP,sAdamRelayIP.toStdString().c_str()); }
-	void setSwitchIP(QString sSwitchIP) { STRCPY(m_szSwitchIP,sSwitchIP.toStdString().c_str()); }
-	void setResetUnits(char *szResetUnits) { STRCPY(m_szResetUnits, szResetUnits); }
-	void setResetDateTime(char *szResetDateTime) { STRCPY(m_szResetDateTime, szResetDateTime); }
-	void setResetPeriodicDateTime(char *szResetPeriodicDateTime) { STRCPY(m_szResetPeriodicDateTime, szResetPeriodicDateTime); }
-	void setGeolocation(char *sGeolocation) { STRCPY(m_sGeolocation, sGeolocation); }
-	void setPeriodicUnits(char *sPeriodicUnits) { STRCPY(m_szPeriodicUnits, sPeriodicUnits); }
-	void setPeriodicDeleteAtTime(char *sPeriodicDeleteAtTime) { STRCPY(m_szPeriodicDeleteAtTime, sPeriodicDeleteAtTime); }
-	void setPeriodicNextCheckTime(char *sNextCheckTime) { STRCPY(m_szNextCheckTime, sNextCheckTime); }
 	/* PRESET LIMITS */
 	void setPTLimitTiltUp(int iPTLimitTiltTop) { m_iPTLimitTiltTop = iPTLimitTiltTop; }
 	int getPTLimitTiltUp() { return m_iPTLimitTiltTop; }
@@ -749,7 +730,6 @@ public:
 	###################### Lite ######################
 	##################################################
 
-	void setConnectionChain(QString sConnectionChain) { STRCPY(m_szConnectionChain,sConnectionChain.toStdString().c_str()); }
 	int getTamVectorData() { return m_iTamVectorData; }
 	void setTamVectorData(int iTamVectorData) { m_iTamVectorData = iTamVectorData; }
 	int getTFrame() { return m_iTFrame; }
@@ -772,11 +752,10 @@ public:
 	double getClipClahe() { return m_dClipClahe; }
 	void setClipClahe(double dClipClahe) { m_dClipClahe = dClipClahe; }
 	char *getDeviceSerialNumber() {return m_sDeviceSerialNumber;}
-	void setDeviceSerialNumber(char *sDeviceSerialNumber) {STRCPY(m_sDeviceSerialNumber, sDeviceSerialNumber);}
+	void setDeviceSerialNumber(char *sDeviceSerialNumber) {strcpy_s(m_sDeviceSerialNumber, sDeviceSerialNumber);}
 	float getFactorMeanPond() { return m_fFactorMeanPond; }
 	void setFactorMeanPond(float fFactorMeanPond) { m_fFactorMeanPond = fFactorMeanPond; }
-	void setUnits(char *szUnits) { STRCPY(m_szUnits, szUnits); }
-	void setDistanceUnits(char *szDistanceUnits) { STRCPY(m_szDistanceUnits, szDistanceUnits); }
+	void setDistanceUnits(char *szDistanceUnits) { strcpy_s(m_szDistanceUnits, szDistanceUnits); }
 	char *getDistanceUnits() { return m_szDistanceUnits; }
 	void setLeakDistance(double iLeakDistance) { m_iLeakDistance = iLeakDistance; }
 	double getLeakDistance() { return m_iLeakDistance; }
@@ -784,8 +763,7 @@ public:
 	double getMinFlowRate() {return m_dMinFlowRateLimit; }
 	void setMaxFlowRate(double dMaxFlowRate) { m_dMaxFlowRateLimit = dMaxFlowRate; }
 	double getMaxFlowRate() {return m_dMaxFlowRateLimit; }
-	void setTarjetGas(char *szTarjetGas) { STRCPY(m_szTarjetGas, szTarjetGas); }
-	void setTemperatureUnits(char *szTemperatureUnits) { STRCPY(m_szTemperatureUnits, szTemperatureUnits); }
+	void setTemperatureUnits(char *szTemperatureUnits) { strcpy_s(m_szTemperatureUnits, szTemperatureUnits); }
 	char *getTemperatureUnits() { return m_szTemperatureUnits; }
 	void setAmbientTemperature(double dAmbientTemperature) { m_dAmbientTemperature = dAmbientTemperature; }
 	double getAmbientTemperature() { return m_dAmbientTemperature; }
@@ -793,13 +771,11 @@ public:
 	int getHR() { return m_iHR; }
 	void setGasTemperature(double dGasTemperature) { m_dGasTemperature = dGasTemperature; }
 	double getGasTemperature() { return m_dGasTemperature; }
-	void setOpticalSize(char *szOpticalSize) { STRCPY(m_szOpticalSize, szOpticalSize); }
-	void setSensitivity(char *szSensitivity) { STRCPY(m_szSensitivity, szSensitivity); }
-	void setDensityUnits(char *szDensityUnits) { STRCPY(m_szDensityUnits, szDensityUnits); }
+	void setDensityUnits(char *szDensityUnits) { strcpy_s(m_szDensityUnits, szDensityUnits); }
 	char *getDensityUnits() { return m_szDensityUnits; }
 	void setGasDensity(double dGasDensity) { m_dGasDensity = dGasDensity; }
 	double getGasDensity() { return m_dGasDensity; }
-	void setQSensitivity(char *szSensitivity) { STRCPY(m_szSensitivity, szSensitivity); }
+	void setQSensitivity(char *szSensitivity) { strcpy_s(m_szSensitivity, szSensitivity); }
 	char *getQSensitivity() { return m_szSensitivity; }
 
 };

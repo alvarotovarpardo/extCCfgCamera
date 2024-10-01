@@ -1,15 +1,313 @@
+#include "config_base.h"
+#include <vector>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cstring>
+#include <map>
+
+class extendedCCfgCamGeneral : public CCfgClass // Change name!!
+{
+private:
+
+	/**************************************/
+	/*******   COMMON PROPERTIES   *******/
+	/**************************************/
+
+
+	/*******   fix & distributed & analytics & lite   *******/
+
+	EnumConfigCameraType m_eConfigCameraType;
+	EnumConfigConnectionMode m_eConfigConnectionMode;
+	EnumConfigSensorType m_eConfigSensorType;
+	bool m_bAutoStretching;
+	bool m_bAutomaticRaw;
+	bool m_bHasShutter;
+	bool m_bHorizontalFlip;
+	bool m_bImageRotate;
+	bool m_bPaletteBar;
+	bool m_bPaletteRtsp;
+	bool m_bPanAndTilt;
+	bool m_bShowDigitalLevels;
+	bool m_bShowNOROI;
+	bool m_bShowROI;
+	bool m_bStretching;
+	bool m_bValuesRtsp;
+	bool m_bVerticalFlip;
+	char m_szCameraModelName[20];
+	char m_szConnectionChain[CONFIG_MAX_PATH + 1];
+	char m_szDescription[50];
+	char m_szPresetActiveAutomatic[CFG_MAX_SMALL_ID + 1];
+	char m_szTourActiveAutomatic[CFG_MAX_SMALL_ID + 1];
+	double m_dCamEmissivity;
+	int m_iBuffMaxLengh;
+	int m_iDiodeBias;
+	int m_iFps;
+	int m_iFpsShow;
+	int m_iFramesSecondRtsp;
+	int m_iGain;
+	int m_iIntegrationTime;
+	int m_iInvertValues;
+	int m_iMatHeight;
+	int m_iMatMetaDataLeft;
+	int m_iMatMetaDataRight;
+	int m_iMatType;
+	int m_iMatWidth;
+	int m_iNucSecondsBetweenAutomatic;
+	int m_iPortThirdPartyHttp;
+	int m_iPortThirdPartyRtsp;
+	int m_iReconnectionAttemps;
+	int m_iReconnectionWait;
+	int m_iSecondsDelayClosedshutterImgnuc;
+	int m_iTimeSendFps;
+	unsigned char m_ucDataBits;
+	unsigned char m_ucModeConvert2_8To16;
+	unsigned short m_usAndConvert2_8To16;
+	unsigned short m_usDivConvert2_8To16;
+
+	/*******   fix & distributed & analytics   *******/
+
+	QByteArray m_baPartNumber;
+	SimpleCrypt *crypto;
+	bool m_bAutoResetEnabled;
+	bool m_bCCTVAccessControl;
+	bool m_bCloseShutter;
+	bool m_bEmailAlert;
+	bool m_bEnableAll;
+	bool m_bHasCompass;
+	bool m_bHasMemorySPI;
+	bool m_bHasPleoraExpansor;
+	bool m_bResetPeriodicEnabled;
+	bool m_bResetPunctualEnabled;
+	bool m_bShowSaturatedPixels;
+	char m_szCCTVPassword[50];
+	char m_szCCTVUsername[50];
+	char m_szResetDateTime[50];
+	char m_szResetPeriodicDateTime[50];
+	int m_iParamGFID;
+	int m_iParamGSK;
+	int m_iParamGain;
+	int m_iParamTInt;
+	int m_iParamVBUS;
+	int m_iParamVSK;
+	int m_iPortThirdPartyOnvif;
+	int m_iResetUnitsValue;
+
+	/*******   fix & distributed & lite   *******/
+
+	int m_iMean;
+	int m_iSkip;
+
+	/*******   fix & analytics & lite   *******/
+
+
+	/*******   distributed & analytics & lite   *******/
+
+
+	/*******   fix & distributed   *******/
+
+	EnumConfigLaserType m_eConfigLaserType;
+	bool m_bAdamRelay;
+	bool m_bAutomaticGain;
+	bool m_bAutomaticMP4;
+	bool m_bCameraRepeatedFrames;
+	bool m_bFPSWarnings;
+	bool m_bHasSensorLens;
+	bool m_bMaintenanceMode;
+	bool m_bPanAndTiltPelcoD;
+	bool m_bPanInverted;
+	bool m_bPeriodicDeleteAt;
+	bool m_bPeriodicDeleteAtActive;
+	bool m_bPeriodicPunctual;
+	bool m_bPeriodicRepeat;
+	bool m_bRTSPAccessControl;
+	bool m_bSensiaNUC;
+	bool m_bShowCurrentFrame;
+	bool m_bShowSimulateName;
+	bool m_bShowWindowTest;
+	bool m_bSwitchPOE;
+	bool m_bTiltInverted;
+	bool m_bWeightingFactors;
+	char m_sGeolocation[100];
+	char m_szAdamRelayIP[CONFIG_MAX_PATH + 1];
+	char m_szConnectionPhidget[CONFIG_MAX_IP + 1];
+	char m_szLicense[CONFIG_MAX_PATH + 1];
+	char m_szNextCheckTime[50];
+	char m_szPeriodicDeleteAtTime[50];
+	char m_szPeriodicUnits[50];
+	char m_szRTSPPassword[50];
+	char m_szRTSPUsername[50];
+	char m_szResetUnits[20];
+	char m_szSerialNumber[CONFIG_MAX_PATH + 1];
+	char m_szSwitchIP[CONFIG_MAX_PATH + 1];
+	double m_dCamGain;
+	double m_dCamOffset;
+	double m_dIFOV;
+	double m_dMediaTemp;
+	double m_dOffsetIfov_x;
+	double m_dOffsetIfov_y;
+	int m_iAdamRelayPort;
+	int m_iAutoGainInterval;
+	int m_iBottomCutout;
+	int m_iCurrentPreset;
+	int m_iCurrentTour;
+	int m_iLaserCOM;
+	int m_iLeftCutout;
+	int m_iMaxOperationTemperature;
+	int m_iMaxPixSaturated;
+	int m_iPanAndTiltCom;
+	int m_iPanAndTiltID;
+	int m_iPanAndTiltSpeed;
+	int m_iPeriodicUnitsValue;
+	int m_iRelayPort;
+	int m_iRightCutout;
+	int m_iSensorPort;
+	int m_iShutterMaxPos;
+	int m_iShutterMinPos;
+	int m_iStepperPort;
+	int m_iSwitchInterface;
+	int m_iTopCutout;
+	std::vector<double> vGlobalTemp;
+
+	/*******   fix & analytics   *******/
+
+
+	/*******   fix & lite   *******/
+
+
+	/*******   distributed & analytics   *******/
+
+
+	/*******   distributed & lite   *******/
+
+	bool m_bStretchingRegion;
+	int m_iRegionSize;
+
+	/*******   analytics & lite   *******/
+
+	char m_szOpticalSize[50];
+	char m_szSensitivity[50];
+	char m_szTarjetGas[50];
+	char m_szUnits[50];
+	double m_dCorrectionFactor;
+
+	/**************************************/
+	/******   SPECIFIC PROPERTIES   ******/
+	/**************************************/
+
+
+	/*******   fix   *******/
+
+	bool m_bAutomaticRLK;
+	bool m_bHasLaser;
+	bool m_bIsDummy;
+	bool m_bPulseRelay;
+	char m_szCameraBand[CONFIG_MAX_PATH + 1];
+	char m_szCameraHierarchy[20];
+	double m_dDistParameterK1;
+	double m_dDistParameterK2;
+	double m_dDistParameterK3;
+	double m_dFocalLength;
+	double m_dPixelPitch;
+	int m_iIntegrationData;
+	int m_iPulseRelaySeconds;
+
+	/*******   distributed   *******/
+
+	int m_iFocalLength;
+	int m_iPTLimitPanLeft;
+	int m_iPTLimitPanRight;
+	int m_iPTLimitTiltBottom;
+	int m_iPTLimitTiltTop;
+	int m_iPixelPitch;
+
+	/*******   analytics   *******/
+
+	EnumConfigCameraMode m_eConfigCameraMode;
+	bool m_bDumpCO2;
+	bool m_bDumpCO;
+	bool m_bDumpHC;
+	bool m_bDumpNOx;
+	bool m_bDumpOpacity;
+	bool m_bEdgeRemove;
+	bool m_bElectronicOld;
+	bool m_bEmailSendAll;
+	bool m_bGasAbsorption;
+	bool m_bGasEmission;
+	bool m_bHasSensorTemperature;
+	bool m_bOCR;
+	char m_sFuel[20];
+	char m_szEmailCC[640];
+	char m_szEmail[50];
+	char m_szPlaybackSpeed[20];
+	char m_szResetUnits[10];
+	double m_dAbsorbanceCO2;
+	double m_dAbsorbanceCO;
+	double m_dAbsorbanceHC;
+	double m_dAbsorbanceNOx;
+	double m_dAbsorbanceOpacity;
+	double m_dLambda1;
+	double m_dLambda2;
+	double m_dTHLocalMinCO2;
+	double m_dTHLocalMinCO;
+	double m_dTHLocalMinHC;
+	double m_dTHLocalMinNOx;
+	double m_dTHLocalMinOpacity;
+	double m_dThresholdCO;
+	double m_dThresholdHC;
+	double m_dThresholdNOx;
+	double m_dThresholdOpacity;
+	double m_dWaitTime;
+	int m_iKernelCO2;
+	int m_iKernelCO;
+	int m_iKernelHC;
+	int m_iKernelNOx;
+	int m_iKernelOpacity;
+	int m_iOCRPort;
+	int m_iOffset;
+	int m_iVariationThreshold;
+
+	/*******   lite   *******/
+
+	char m_sDeviceSerialNumber[50];
+	char m_szDensityUnits[50];
+	char m_szDistanceUnits[50];
+	char m_szTemperatureUnits[50];
+	double m_dAmbientTemperature;
+	double m_dClipClahe;
+	double m_dClipClaheEnhanced;
+	double m_dClipClaheSkip;
+	double m_dGasDensity;
+	double m_dGasTemperature;
+	double m_dMaxFlowRateLimit;
+	double m_dMinFlowRateLimit;
+	double m_iLeakDistance;
+	float m_fFactorMeanPond;
+	int m_iHR;
+	int m_iSizeClahe;
+	int m_iSizeClaheEnhanced;
+	int m_iSizeClaheSkip;
+	int m_iTFrame;
+	int m_iTamVectorData;
+	int m_iWindowSize;
+
+
+public:
 	enum EnumConfigConnectionMode { CONFIG_CAM_CMODE_ARAVIS, CONFIG_CAM_CMODE_CCTV, CONFIG_CAM_CMODE_DMK, CONFIG_CAM_CMODE_EYECGAS, CONFIG_CAM_CMODE_FLIR_ATLAS, CONFIG_CAM_CMODE_FLIR_SPINNAKER, CONFIG_CAM_CMODE_GST, CONFIG_CAM_CMODE_NONE, CONFIG_CAM_CMODE_OPENCV, CONFIG_CAM_CMODE_PCO, CONFIG_CAM_CMODE_PLEORA, CONFIG_CAM_CMODE_SIMULATE, CONFIG_CAM_CMODE_SIMULATE_EYECGAS, CONFIG_CAM_CMODE_SIMULATE_FLIR, CONFIG_CAM_CMODE_SMART, CONFIG_CAM_CMODE_VIDEOINPUT };
 	enum EnumConfigCameraType { CONFIG_CAM_TYPE_NONE, CONFIG_CAM_TYPE_THERMAL, CONFIG_CAM_TYPE_VISIBLE };
 	enum EnumConfigSensorType { CONFIG_SENSOR_ATTO640, CONFIG_SENSOR_FASTPELICAN, CONFIG_SENSOR_FREJA, CONFIG_SENSOR_GUIDE, CONFIG_SENSOR_HOTPELICAN, CONFIG_SENSOR_KINGLET, CONFIG_SENSOR_NONE, CONFIG_SENSOR_PELICAN, CONFIG_SENSOR_PICO, CONFIG_SENSOR_PICO384, CONFIG_SENSOR_PICO384V2, CONFIG_SENSOR_PICO640, CONFIG_SENSOR_VOXI };
 	enum EnumConfigLaserType { CONFIG_LASER_A, CONFIG_LASER_B, CONFIG_LASER_NONE };
 	enum EnumFocus { FOCUS_AUTO, FOCUS_DECREMENT, FOCUS_INCREMENT };
 	enum EnumConfigCameraMode { CONFIG_MODE_ETHERNET, CONFIG_MODE_OTHER, CONFIG_MODE_USB };
-	CCfgCamGeneral();
-	virtual ~CCfgCamGeneral();
+	
+	extendedCCfgCamGeneral();
+	virtual ~extendedCCfgCamGeneral();
+	
 	void initDefault();
 	void display();
 	void matchField(std::string &sAtributo, Jzon::Node &nodoValor);
 	void serializeFields(Jzon::Node &node);
+	
 	char *getDescription() { return m_szDescription; }
 	EnumConfigConnectionMode getConnectionMode() { return m_eConfigConnectionMode; }
 	void setConnectionMode(EnumConfigConnectionMode eConfigConnectionMode) { m_eConfigConnectionMode = eConfigConnectionMode; }
@@ -306,20 +604,39 @@
 	void setPeriodicNextCheckTime(char *sNextCheckTime) { strcpy_s(m_szNextCheckTime, sNextCheckTime); }
 	char *getPeriodicNextCheckTime() { return m_szNextCheckTime; }
 
-	##################################################
-	################## Distributed ###################
-	##################################################
+	/*##################################################
+	  ################## Distributed ###################
+	  ##################################################*/
 
+	void setConnectionChain(QString sConnectionChain) { STRCPY(m_szConnectionChain,sConnectionChain.toLatin1().toStdString().c_str()); }
+	void setSerialNumber(QString sSerialNumber) { STRCPY(m_szSerialNumber,sSerialNumber.toStdString().c_str()); }
+	void setLicense(QString sLicense) { STRCPY(m_szLicense, sLicense.toStdString().c_str()); }
 	int getFocalLength() { return m_iFocalLength; }
 	int getPixelPitch() { return m_iPixelPitch; }
+	void setDescription(char *szDescription) { STRCPY(m_szDescription, szDescription); }
 	void setFocalLength(int iFocalLength) { m_iFocalLength = iFocalLength; }
 	void setPixelPitch(int iPixelPitch) { m_iPixelPitch = iPixelPitch; }
+	void setCCTVUsername(char *szCCTVUsername) { STRCPY(m_szCCTVUsername, szCCTVUsername); }
+	void setCCTVPassword(char *szCCTVPassword) { STRCPY(m_szCCTVPassword, szCCTVPassword); }
+	void setCameraModelName(char *sCameraModelName) { STRCPY(m_szCameraModelName,sCameraModelName); }
+	void setRTSPUsername(char *szRTSPUsername) { STRCPY(m_szRTSPUsername, szRTSPUsername); }
+	void setRTSPPassword(char *szRTSPPassword) { STRCPY(m_szRTSPPassword, szRTSPPassword); }
 	void setStretchingRegion(bool bStretchingRegion) { m_bStretchingRegion = bStretchingRegion; }
 	void setRegionSize(int iRegionSize) { m_iRegionSize = iRegionSize; }
 	bool getStretchingRegion() { return m_bStretchingRegion; }
 	int getRegionSize() { return m_iRegionSize; }
+	void setConnectionPhidget(QString sConnectionPhidget) { STRCPY(m_szConnectionPhidget,sConnectionPhidget.toStdString().c_str()); }
 	void setTourActiveAutomatic(char * szTour) { STRNCPY(m_szTourActiveAutomatic, szTour,  CFG_MAX_SMALL_ID); }
 	void setPresetActiveAutomatic(char * szPreset) { STRNCPY(m_szPresetActiveAutomatic, szPreset,  CFG_MAX_SMALL_ID); }
+	void setAdamRelayIP(QString sAdamRelayIP) { STRCPY(m_szAdamRelayIP,sAdamRelayIP.toStdString().c_str()); }
+	void setSwitchIP(QString sSwitchIP) { STRCPY(m_szSwitchIP,sSwitchIP.toStdString().c_str()); }
+	void setResetUnits(char *szResetUnits) { STRCPY(m_szResetUnits, szResetUnits); }
+	void setResetDateTime(char *szResetDateTime) { STRCPY(m_szResetDateTime, szResetDateTime); }
+	void setResetPeriodicDateTime(char *szResetPeriodicDateTime) { STRCPY(m_szResetPeriodicDateTime, szResetPeriodicDateTime); }
+	void setGeolocation(char *sGeolocation) { STRCPY(m_sGeolocation, sGeolocation); }
+	void setPeriodicUnits(char *sPeriodicUnits) { STRCPY(m_szPeriodicUnits, sPeriodicUnits); }
+	void setPeriodicDeleteAtTime(char *sPeriodicDeleteAtTime) { STRCPY(m_szPeriodicDeleteAtTime, sPeriodicDeleteAtTime); }
+	void setPeriodicNextCheckTime(char *sNextCheckTime) { STRCPY(m_szNextCheckTime, sNextCheckTime); }
 	/* PRESET LIMITS */
 	void setPTLimitTiltUp(int iPTLimitTiltTop) { m_iPTLimitTiltTop = iPTLimitTiltTop; }
 	int getPTLimitTiltUp() { return m_iPTLimitTiltTop; }
@@ -332,9 +649,9 @@
 	bool copyBakToCam(std::string sPathCam);
 	bool copyCamToBak(std::string sPathCam);
 
-	##################################################
-	#################### Analytics ###################
-	##################################################
+	/*##################################################
+	  #################### Analytics ###################
+	  ##################################################*/
 
 	EnumConfigCameraMode getConfigCameraMode() { return m_eConfigCameraMode; }
 	void setConfigCameramode(EnumConfigCameraMode eConfigCameraMode) { m_eConfigCameraMode = eConfigCameraMode; }
@@ -436,10 +753,11 @@
 	void setEdgeRemove(bool bEdgeRemove) { m_bEdgeRemove = bEdgeRemove; }
 	bool getEdgeRemove() { return m_bEdgeRemove; }
 
-	##################################################
-	###################### Lite ######################
-	##################################################
+	/*##################################################
+	  ###################### Lite ######################
+	  ##################################################*/
 
+	void setConnectionChain(QString sConnectionChain) { STRCPY(m_szConnectionChain,sConnectionChain.toStdString().c_str()); }
 	int getTamVectorData() { return m_iTamVectorData; }
 	void setTamVectorData(int iTamVectorData) { m_iTamVectorData = iTamVectorData; }
 	int getTFrame() { return m_iTFrame; }
@@ -462,10 +780,11 @@
 	double getClipClahe() { return m_dClipClahe; }
 	void setClipClahe(double dClipClahe) { m_dClipClahe = dClipClahe; }
 	char *getDeviceSerialNumber() {return m_sDeviceSerialNumber;}
-	void setDeviceSerialNumber(char *sDeviceSerialNumber) {strcpy_s(m_sDeviceSerialNumber, sDeviceSerialNumber);}
+	void setDeviceSerialNumber(char *sDeviceSerialNumber) {STRCPY(m_sDeviceSerialNumber, sDeviceSerialNumber);}
 	float getFactorMeanPond() { return m_fFactorMeanPond; }
 	void setFactorMeanPond(float fFactorMeanPond) { m_fFactorMeanPond = fFactorMeanPond; }
-	void setDistanceUnits(char *szDistanceUnits) { strcpy_s(m_szDistanceUnits, szDistanceUnits); }
+	void setUnits(char *szUnits) { STRCPY(m_szUnits, szUnits); }
+	void setDistanceUnits(char *szDistanceUnits) { STRCPY(m_szDistanceUnits, szDistanceUnits); }
 	char *getDistanceUnits() { return m_szDistanceUnits; }
 	void setLeakDistance(double iLeakDistance) { m_iLeakDistance = iLeakDistance; }
 	double getLeakDistance() { return m_iLeakDistance; }
@@ -473,7 +792,8 @@
 	double getMinFlowRate() {return m_dMinFlowRateLimit; }
 	void setMaxFlowRate(double dMaxFlowRate) { m_dMaxFlowRateLimit = dMaxFlowRate; }
 	double getMaxFlowRate() {return m_dMaxFlowRateLimit; }
-	void setTemperatureUnits(char *szTemperatureUnits) { strcpy_s(m_szTemperatureUnits, szTemperatureUnits); }
+	void setTarjetGas(char *szTarjetGas) { STRCPY(m_szTarjetGas, szTarjetGas); }
+	void setTemperatureUnits(char *szTemperatureUnits) { STRCPY(m_szTemperatureUnits, szTemperatureUnits); }
 	char *getTemperatureUnits() { return m_szTemperatureUnits; }
 	void setAmbientTemperature(double dAmbientTemperature) { m_dAmbientTemperature = dAmbientTemperature; }
 	double getAmbientTemperature() { return m_dAmbientTemperature; }
@@ -481,9 +801,13 @@
 	int getHR() { return m_iHR; }
 	void setGasTemperature(double dGasTemperature) { m_dGasTemperature = dGasTemperature; }
 	double getGasTemperature() { return m_dGasTemperature; }
-	void setDensityUnits(char *szDensityUnits) { strcpy_s(m_szDensityUnits, szDensityUnits); }
+	void setOpticalSize(char *szOpticalSize) { STRCPY(m_szOpticalSize, szOpticalSize); }
+	void setSensitivity(char *szSensitivity) { STRCPY(m_szSensitivity, szSensitivity); }
+	void setDensityUnits(char *szDensityUnits) { STRCPY(m_szDensityUnits, szDensityUnits); }
 	char *getDensityUnits() { return m_szDensityUnits; }
 	void setGasDensity(double dGasDensity) { m_dGasDensity = dGasDensity; }
 	double getGasDensity() { return m_dGasDensity; }
-	void setQSensitivity(char *szSensitivity) { strcpy_s(m_szSensitivity, szSensitivity); }
+	void setQSensitivity(char *szSensitivity) { STRCPY(m_szSensitivity, szSensitivity); }
 	char *getQSensitivity() { return m_szSensitivity; }
+
+};

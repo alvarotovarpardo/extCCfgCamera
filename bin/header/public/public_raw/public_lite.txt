@@ -11,13 +11,13 @@
     void serializeFields(Jzon::Node &node);
 
     char *getDescription() { return m_szDescription; }
-    void setDescription(char *szDescription) { STRCPY(m_szDescription, szDescription); }
+    void setDescription(char *szDescription) { strcpy_s(m_szDescription, szDescription); }
     EnumConfigConnectionMode getConnectionMode() { return m_eConfigConnectionMode; }
     void setConnectionMode(EnumConfigConnectionMode eConfigConnectionMode) { m_eConfigConnectionMode = eConfigConnectionMode; }
     char *getConnectionChain() { return m_szConnectionChain; }
-    void setConnectionChain(QString sConnectionChain) { STRCPY(m_szConnectionChain,sConnectionChain.toStdString().c_str()); }
+    void setConnectionChain(QString sConnectionChain) { strcpy_s(m_szConnectionChain,sConnectionChain.toStdString().c_str()); }
     char *getCameraModelName() { return m_szCameraModelName; }
-    void setCameraModelName(char *sCameraModelName) { STRCPY(m_szCameraModelName,sCameraModelName); }
+    void setCameraModelName(char *sCameraModelName) { strcpy_s(m_szCameraModelName,sCameraModelName); }
     EnumConfigCameraType getConfigCameraType() { return m_eConfigCameraType; }
     void setConfigCameraType(EnumConfigCameraType eConfigCamera) { m_eConfigCameraType = eConfigCamera; }
     EnumConfigSensorType getConfigSensorType() { return m_eConfigSensorType; }
@@ -135,15 +135,15 @@
     double getClipClahe() { return m_dClipClahe; }
     void setClipClahe(double dClipClahe) { m_dClipClahe = dClipClahe; }
     char *getDeviceSerialNumber() {return m_sDeviceSerialNumber;}
-    void setDeviceSerialNumber(char *sDeviceSerialNumber) {STRCPY(m_sDeviceSerialNumber, sDeviceSerialNumber);}
+    void setDeviceSerialNumber(char *sDeviceSerialNumber) {strcpy_s(m_sDeviceSerialNumber, sDeviceSerialNumber);}
     float getFactorMeanPond() { return m_fFactorMeanPond; }
     void setFactorMeanPond(float fFactorMeanPond) { m_fFactorMeanPond = fFactorMeanPond; }
     //************************************************************************************
 
     //********************************* VARIABLES DE Quantification *************************
-    void setUnits(char *szUnits) { STRCPY(m_szUnits, szUnits); }
+    void setUnits(char *szUnits) { strcpy_s(m_szUnits, szUnits); }
     char *getUnits() { return m_szUnits; }
-    void setDistanceUnits(char *szDistanceUnits) { STRCPY(m_szDistanceUnits, szDistanceUnits); }
+    void setDistanceUnits(char *szDistanceUnits) { strcpy_s(m_szDistanceUnits, szDistanceUnits); }
     char *getDistanceUnits() { return m_szDistanceUnits; }
     void setLeakDistance(double iLeakDistance) { m_iLeakDistance = iLeakDistance; }
     double getLeakDistance() { return m_iLeakDistance; }
@@ -151,11 +151,11 @@
     double getMinFlowRate() {return m_dMinFlowRateLimit; }
     void setMaxFlowRate(double dMaxFlowRate) { m_dMaxFlowRateLimit = dMaxFlowRate; }
     double getMaxFlowRate() {return m_dMaxFlowRateLimit; }
-    void setTarjetGas(char *szTarjetGas) { STRCPY(m_szTarjetGas, szTarjetGas); }
+    void setTarjetGas(char *szTarjetGas) { strcpy_s(m_szTarjetGas, szTarjetGas); }
     char *getTarjetGas() { return m_szTarjetGas; }
     void setCorrectionFactor(double dCorrectionFactor) { m_dCorrectionFactor = dCorrectionFactor; }
     double getCorrectionFactor() { return m_dCorrectionFactor; }
-    void setTemperatureUnits(char *szTemperatureUnits) { STRCPY(m_szTemperatureUnits, szTemperatureUnits); }
+    void setTemperatureUnits(char *szTemperatureUnits) { strcpy_s(m_szTemperatureUnits, szTemperatureUnits); }
     char *getTemperatureUnits() { return m_szTemperatureUnits; }
     void setAmbientTemperature(double dAmbientTemperature) { m_dAmbientTemperature = dAmbientTemperature; }
     double getAmbientTemperature() { return m_dAmbientTemperature; }
@@ -163,15 +163,15 @@
     int getHR() { return m_iHR; }
     void setGasTemperature(double dGasTemperature) { m_dGasTemperature = dGasTemperature; }
     double getGasTemperature() { return m_dGasTemperature; }
-    void setOpticalSize(char *szOpticalSize) { STRCPY(m_szOpticalSize, szOpticalSize); }
+    void setOpticalSize(char *szOpticalSize) { strcpy_s(m_szOpticalSize, szOpticalSize); }
     char *getOpticalSize() { return m_szOpticalSize; }
-    void setSensitivity(char *szSensitivity) { STRCPY(m_szSensitivity, szSensitivity); }
+    void setSensitivity(char *szSensitivity) { strcpy_s(m_szSensitivity, szSensitivity); }
     char *getSensitivity() { return m_szSensitivity; }
-    void setDensityUnits(char *szDensityUnits) { STRCPY(m_szDensityUnits, szDensityUnits); }
+    void setDensityUnits(char *szDensityUnits) { strcpy_s(m_szDensityUnits, szDensityUnits); }
     char *getDensityUnits() { return m_szDensityUnits; }
     void setGasDensity(double dGasDensity) { m_dGasDensity = dGasDensity; }
     double getGasDensity() { return m_dGasDensity; }
-    void setQSensitivity(char *szSensitivity) { STRCPY(m_szSensitivity, szSensitivity); }
+    void setQSensitivity(char *szSensitivity) { strcpy_s(m_szSensitivity, szSensitivity); }
     char *getQSensitivity() { return m_szSensitivity; }
     //************************************************************************************
 

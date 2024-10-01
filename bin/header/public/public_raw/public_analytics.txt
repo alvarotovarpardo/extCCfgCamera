@@ -200,13 +200,13 @@
     bool getResetPunctualEnabled() { return m_bResetPunctualEnabled; }
     void setResetPunctualEnabled(bool bStatus) { m_bResetPunctualEnabled = bStatus; }
     char *getResetUnits() { return m_szResetUnits; }
-    void setResetUnits(char *szResetUnits) { STRCPY(m_szResetUnits, szResetUnits); }
+    void setResetUnits(char *szResetUnits) { strcpy_s(m_szResetUnits, szResetUnits); }
     int getResetUnitsValue() { return m_iResetUnitsValue; }
     void setResetUnitsValue(int iResetUnitsValue) { m_iResetUnitsValue = iResetUnitsValue; }
     char *getResetDateTime() { return m_szResetDateTime; }
-    void setResetDateTime(char *szResetDateTime) { STRCPY(m_szResetDateTime, szResetDateTime); }
+    void setResetDateTime(char *szResetDateTime) { strcpy_s(m_szResetDateTime, szResetDateTime); }
     char *getResetPeriodicDateTime() { return m_szResetPeriodicDateTime; }
-    void setResetPeriodicDateTime(char *szResetPeriodicDateTime) { STRCPY(m_szResetPeriodicDateTime, szResetPeriodicDateTime); }
+    void setResetPeriodicDateTime(char *szResetPeriodicDateTime) { strcpy_s(m_szResetPeriodicDateTime, szResetPeriodicDateTime); }
     //************************************************************************************
 
     //****************************** Variables de configuración RIO **********************
