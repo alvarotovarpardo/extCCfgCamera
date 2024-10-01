@@ -24,6 +24,10 @@ def extractMethods():
                 if 0 <= line.find('enum') < 10:
                     enums.append(line)
                     continue
+                if 'STRCPY' in line:
+                    line = re.sub('STRCPY','strcpy_s', line)
+                if 'STRNCPY' in line:
+                    line = re.sub('STRNCPY', 'strncpy_s', line)
                 methods.append(line)
         return methods, enums
 
@@ -35,8 +39,6 @@ def extractMethods():
         # Copiar el contenido de public_fix.txt directamente al archivo unificado
         with open(output_file, 'w', encoding='utf-8') as output:
             for method in methods_fix:
-                if 'STRCPY' in method:
-                    method = re.sub('STRCPY','strcpy_s', method)
                 output.write('\t' + method + '\n')
             
         with open(enum_output, 'w', encoding='utf-8') as output:
@@ -55,9 +57,9 @@ def extractMethods():
             for method in methods_distributed:
                 if method not in methods_fix:
                     if flag == 0:
-                        output.write('\n\t##################################################\n')
-                        output.write('\t################## Distributed ###################\n')
-                        output.write('\t##################################################\n\n')
+                        output.write('\n\t/*##################################################\n')
+                        output.write('\t  ################## Distributed ###################\n')
+                        output.write('\t  ##################################################*/\n\n')
                         flag = 1
                     output.write('\t' + method + '\n')
     
@@ -78,9 +80,9 @@ def extractMethods():
             for method in methods_analytics:
                 if method not in methods_fix and method not in methods_distributed:
                     if flag == 0:
-                        output.write('\n\t##################################################\n')
-                        output.write('\t#################### Analytics ###################\n')
-                        output.write('\t##################################################\n\n')
+                        output.write('\n\t/*##################################################\n')
+                        output.write('\t  ################## Analytics ###################\n')
+                        output.write('\t  ##################################################*/\n\n')
                         flag = 1
                     output.write('\t' + method + '\n')
     
@@ -101,12 +103,10 @@ def extractMethods():
             for method in methods_lite:
                 if method not in methods_fix and method not in methods_distributed and method not in methods_analytics:
                     if flag == 0:
-                        output.write('\n\t##################################################\n')
-                        output.write('\t###################### Lite ######################\n')
-                        output.write('\t##################################################\n\n')
+                        output.write('\n\t/*##################################################\n')
+                        output.write('\t  ###################### Lite ######################\n')
+                        output.write('\t  ##################################################*/\n\n')
                         flag = 1
-                    if 'STRCPY' in method:
-                        method = re.sub('STRCPY','strcpy_s', method)
                     output.write('\t' + method + '\n')
                     
         with open(enum_output, 'a', encoding='utf-8') as output:

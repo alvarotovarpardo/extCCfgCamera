@@ -306,9 +306,9 @@
 	void setPeriodicNextCheckTime(char *sNextCheckTime) { strcpy_s(m_szNextCheckTime, sNextCheckTime); }
 	char *getPeriodicNextCheckTime() { return m_szNextCheckTime; }
 
-	##################################################
-	################## Distributed ###################
-	##################################################
+	/*##################################################
+	  ################## Distributed ###################
+	  ##################################################*/
 
 	int getFocalLength() { return m_iFocalLength; }
 	int getPixelPitch() { return m_iPixelPitch; }
@@ -318,8 +318,6 @@
 	void setRegionSize(int iRegionSize) { m_iRegionSize = iRegionSize; }
 	bool getStretchingRegion() { return m_bStretchingRegion; }
 	int getRegionSize() { return m_iRegionSize; }
-	void setTourActiveAutomatic(char * szTour) { STRNCPY(m_szTourActiveAutomatic, szTour,  CFG_MAX_SMALL_ID); }
-	void setPresetActiveAutomatic(char * szPreset) { STRNCPY(m_szPresetActiveAutomatic, szPreset,  CFG_MAX_SMALL_ID); }
 	/* PRESET LIMITS */
 	void setPTLimitTiltUp(int iPTLimitTiltTop) { m_iPTLimitTiltTop = iPTLimitTiltTop; }
 	int getPTLimitTiltUp() { return m_iPTLimitTiltTop; }
@@ -332,9 +330,9 @@
 	bool copyBakToCam(std::string sPathCam);
 	bool copyCamToBak(std::string sPathCam);
 
-	##################################################
-	#################### Analytics ###################
-	##################################################
+	/*##################################################
+	  ################## Analytics ###################
+	  ##################################################*/
 
 	EnumConfigCameraMode getConfigCameraMode() { return m_eConfigCameraMode; }
 	void setConfigCameramode(EnumConfigCameraMode eConfigCameraMode) { m_eConfigCameraMode = eConfigCameraMode; }
@@ -436,9 +434,9 @@
 	void setEdgeRemove(bool bEdgeRemove) { m_bEdgeRemove = bEdgeRemove; }
 	bool getEdgeRemove() { return m_bEdgeRemove; }
 
-	##################################################
-	###################### Lite ######################
-	##################################################
+	/*##################################################
+	  ###################### Lite ######################
+	  ##################################################*/
 
 	int getTamVectorData() { return m_iTamVectorData; }
 	void setTamVectorData(int iTamVectorData) { m_iTamVectorData = iTamVectorData; }

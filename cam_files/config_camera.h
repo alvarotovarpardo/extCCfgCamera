@@ -600,9 +600,9 @@ public:
 	void setPeriodicNextCheckTime(char *sNextCheckTime) { strcpy_s(m_szNextCheckTime, sNextCheckTime); }
 	char *getPeriodicNextCheckTime() { return m_szNextCheckTime; }
 
-	##################################################
-	################## Distributed ###################
-	##################################################
+	/*##################################################
+	  ################## Distributed ###################
+	  ##################################################*/
 
 	int getFocalLength() { return m_iFocalLength; }
 	int getPixelPitch() { return m_iPixelPitch; }
@@ -730,9 +730,9 @@ public:
 	void setEdgeRemove(bool bEdgeRemove) { m_bEdgeRemove = bEdgeRemove; }
 	bool getEdgeRemove() { return m_bEdgeRemove; }
 
-	##################################################
-	###################### Lite ######################
-	##################################################
+	/*##################################################
+	  ###################### Lite ######################
+	 ##################################################*/
 
 	int getTamVectorData() { return m_iTamVectorData; }
 	void setTamVectorData(int iTamVectorData) { m_iTamVectorData = iTamVectorData; }
