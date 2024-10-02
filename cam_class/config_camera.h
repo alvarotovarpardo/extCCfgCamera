@@ -1,6 +1,12 @@
 #include "config_base.h"
 #include <vector>
 
+/* Included by hand: #include <mutex> está en util.h */
+// No puede ser static si se quiere usar como global. mtxChange y mtxSaveConfig solo se usa en esta clase
+#include <mutex>
+std::mutex mtxChangeHotConfig, mtxChangePointStart, mutexDNN;
+static std::mutex mtxChange, mtxSaveConfig;
+
 class extendedCCfgCamGeneral : public CCfgClass // Change name!!
 {
 private:
@@ -12,9 +18,6 @@ private:
 
 	/*******   fix & distributed & analytics & lite   *******/
 
-	EnumConfigCameraType m_eConfigCameraType;
-	EnumConfigConnectionMode m_eConfigConnectionMode;
-	EnumConfigSensorType m_eConfigSensorType;
 	bool m_bAutoStretching;
 	bool m_bAutomaticRaw;
 	bool m_bHasShutter;
@@ -101,7 +104,6 @@ private:
 
 	/*******   fix & distributed   *******/
 
-	EnumConfigLaserType m_eConfigLaserType;
 	bool m_bAdamRelay;
 	bool m_bAutomaticGain;
 	bool m_bAutomaticMP4;
@@ -218,7 +220,7 @@ private:
 
 	/*******   analytics   *******/
 
-	EnumConfigCameraMode m_eConfigCameraMode;
+	
 	bool m_bDumpCO2;
 	bool m_bDumpCO;
 	bool m_bDumpHC;
@@ -235,7 +237,6 @@ private:
 	char m_szEmailCC[640];
 	char m_szEmail[50];
 	char m_szPlaybackSpeed[20];
-	char m_szResetUnits[10];
 	double m_dAbsorbanceCO2;
 	double m_dAbsorbanceCO;
 	double m_dAbsorbanceHC;
@@ -602,8 +603,8 @@ public:
 	  ################## Distributed ###################
 	  ##################################################*/
 
-	int getFocalLength() { return m_iFocalLength; }
-	int getPixelPitch() { return m_iPixelPitch; }
+	//int getFocalLength() { return m_iFocalLength; }
+	//int getPixelPitch() { return m_iPixelPitch; }
 	void setFocalLength(int iFocalLength) { m_iFocalLength = iFocalLength; }
 	void setPixelPitch(int iPixelPitch) { m_iPixelPitch = iPixelPitch; }
 	void setStretchingRegion(bool bStretchingRegion) { m_bStretchingRegion = bStretchingRegion; }
@@ -636,9 +637,6 @@ public:
 	void setPlaybackSpeed(char *sPlaybackSpeed) { strcpy_s(m_szPlaybackSpeed, sPlaybackSpeed); }
 	char *getPlaybackSpeed() { return m_szPlaybackSpeed; }
 	void setCCTVAccessControl(bool bCCTVAccesControl) { m_bCCTVAccessControl = bCCTVAccesControl; }
-	void setPaletteBar(bool bPaletteBar) { m_bPaletteBar = bPaletteBar; }
-	void setShowDigitalLevels(bool bShowDigitalLevels) { m_bShowDigitalLevels = bShowDigitalLevels; }
-	void setShowSaturatedPixels(bool bShowSaturatedPixels) { m_bShowSaturatedPixels = bShowSaturatedPixels; }
 	void setEmail(char *szEmail) { strcpy_s(m_szEmail, szEmail); }
 	void setEmailCC(char *szEmailCC) { strcpy_s(m_szEmailCC, szEmailCC); }
 	void setEmailSendAll(bool bEmailSendAll) { m_bEmailSendAll = bEmailSendAll; }
@@ -734,9 +732,6 @@ public:
 	void setTamVectorData(int iTamVectorData) { m_iTamVectorData = iTamVectorData; }
 	int getTFrame() { return m_iTFrame; }
 	void setTFrame(int iTFrame) { m_iTFrame = iTFrame; }
-	bool getImageRotate(){ return m_bImageRotate;}
-	void setImageRotate(bool bImageRotate) {m_bImageRotate = bImageRotate;}
-	int getMean() { return m_iMean; }
 	int getWindowSize() { return m_iWindowSize; }
 	void setWindowSize(int iWindowSize) { m_iWindowSize = iWindowSize; }
 	int getSizeClaheSkip() { return m_iSizeClaheSkip; }
@@ -778,4 +773,10 @@ public:
 	void setQSensitivity(char *szSensitivity) { strcpy_s(m_szSensitivity, szSensitivity); }
 	char *getQSensitivity() { return m_szSensitivity; }
 
+private:
+	EnumConfigCameraMode m_eConfigCameraMode;
+	EnumConfigLaserType m_eConfigLaserType;
+	EnumConfigCameraType m_eConfigCameraType;
+	EnumConfigConnectionMode m_eConfigConnectionMode;
+	EnumConfigSensorType m_eConfigSensorType;
 };
