@@ -187,6 +187,8 @@ def copyFilesToC_Code():
             print(f"'{cpp_config_base}' not found.")
 
         print(f"C code copied to {c_folder}")
+        
+        
 ###########################  CONFIG BASE  #####################################
 def readConfigBaseHeader(input_file):
     with open(input_file, 'r') as f:
@@ -208,8 +210,16 @@ def createConfigBaseHeader(input_paths):
         if content:
             with open(os.path.join(output_dir, file_name), 'w') as f:
                 f.write("#ifndef CCONFIG_BASE_H_\n#define CCONFIG_BASE_H_\n\n")
-                f.write("#define CFGCLASS_MAX_NAME 20\n\n\n")
-                f.write(content)
+                f.write("#define CFGCLASS_MAX_NAME 20\n#define CFG_MAX_DESCRIPTION 30\n#define CFG_MAX_SMALL_ID 3\n\n")
+                f.write("#define CONFIG_MAX_PATH 256\n#define CONFIG_MAX_IP 16\n#define CONFIG_MAX_HOST 256\n\n")
+                f.write("#define MAX_SERIAL_PORTS_CAMERA 3\n\n")
+                f.write("#include <iostream>\n#include <fstream>\n#include <cstring>\n\n")
+                # Comentamos los Jzon
+                lines = content.splitlines()
+                for line in lines:
+                    if 'Jzon' in line:
+                        line = '//' + line
+                    f.write(line + "\n")
                 f.write("\n\n\n#endif /* CCONFIG_BASE_H_ */")
         else:
             print(f"No se encontró la clase CCfgClass en {input_path}")
@@ -236,7 +246,7 @@ def createConfigBaseCpp(input_paths):
         content = readConfigBaseCpp(input_path)
         if content:
             with open(os.path.join(output_dir, file_name), 'w') as f:
-                f.write("#include 'config_base.h'\n\n")
+                f.write("#include \"config_base.h\"\n\n")
                 f.write(content)
             print(f"Constructor y destructor copiados a {file_name}")
         else:

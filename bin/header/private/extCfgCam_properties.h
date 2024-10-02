@@ -1,5 +1,5 @@
-#include 'config_base.h'
-
+#include "config_base.h"
+#include <vector>
 
 class extendedCCfgCamGeneral : public CCfgClass // Change name!!
 {

@@ -4,21 +4,21 @@
 	enum EnumConfigLaserType { CONFIG_LASER_A, CONFIG_LASER_B, CONFIG_LASER_NONE };
 	enum EnumFocus { FOCUS_AUTO, FOCUS_DECREMENT, FOCUS_INCREMENT };
 	enum EnumConfigCameraMode { CONFIG_MODE_ETHERNET, CONFIG_MODE_OTHER, CONFIG_MODE_USB };
-	CCfgCamGeneral();
-	virtual ~CCfgCamGeneral();
+	extendedCCfgCamGeneral();
+	virtual ~extendedCCfgCamGeneral();
 	void initDefault();
 	void display();
-	void matchField(std::string &sAtributo, Jzon::Node &nodoValor);
-	void serializeFields(Jzon::Node &node);
+	//void matchField(std::string &sAtributo, Jzon::Node &nodoValor);
+	//void serializeFields(Jzon::Node &node);
 	char *getDescription() { return m_szDescription; }
 	EnumConfigConnectionMode getConnectionMode() { return m_eConfigConnectionMode; }
 	void setConnectionMode(EnumConfigConnectionMode eConfigConnectionMode) { m_eConfigConnectionMode = eConfigConnectionMode; }
 	char *getConnectionChain() { return m_szConnectionChain; }
-	void setConnectionChain(QString sConnectionChain) { strcpy_s(m_szConnectionChain,sConnectionChain.toLatin1().toStdString().c_str()); }
+	//void setConnectionChain(QString sConnectionChain) { strcpy_s(m_szConnectionChain,sConnectionChain.toLatin1().toStdString().c_str()); }
 	char *getSerialNumber() { return m_szSerialNumber; }
-	void setSerialNumber(QString sSerialNumber) { strcpy_s(m_szSerialNumber,sSerialNumber.toStdString().c_str()); }
+	//void setSerialNumber(QString sSerialNumber) { strcpy_s(m_szSerialNumber,sSerialNumber.toStdString().c_str()); }
 	char *getLicense() { return m_szLicense; }
-	void setLicense(QString sLicense) { strcpy_s(m_szLicense, sLicense.toStdString().c_str()); }
+	//void setLicense(QString sLicense) { strcpy_s(m_szLicense, sLicense.toStdString().c_str()); }
 	int getFps() { return m_iFps; }
 	int getTimeSendFps() { return m_iTimeSendFps; }
 	int getFpsShow() { return m_iFpsShow; }
@@ -72,8 +72,8 @@
 	void setCameraModelName(char *sCameraModelName) { strcpy_s(m_szCameraModelName,sCameraModelName); }
 	char *getCameraHierarchy() { return m_szCameraHierarchy; }
 	void setCameraHierarchy(char *sCameraHierarchy) { strcpy_s(m_szCameraHierarchy, sCameraHierarchy); }
-	QByteArray getPartNumber() { return m_baPartNumber; }
-	void setPartNumber(QByteArray baPartNumber) { m_baPartNumber = baPartNumber; }
+	//QByteArray getPartNumber() { return m_baPartNumber; }
+	//void setPartNumber(QByteArray baPartNumber) { m_baPartNumber = baPartNumber; }
 	int getMatMetaDataLeft() { return m_iMatMetaDataLeft; }
 	void setMatMetaDataLeft(int iMatMetaDataLeft) { m_iMatMetaDataLeft = iMatMetaDataLeft; }
 	int getMatMetaDataRigh() { return m_iMatMetaDataRight; }
@@ -199,7 +199,7 @@
 	void setEmailAlert(bool bEmailAlert) { m_bEmailAlert = bEmailAlert; }
 	bool getEmailAlert() { return m_bEmailAlert; }
 	char *getConnectionPhidget() { return m_szConnectionPhidget; }
-	void setConnectionPhidget(QString sConnectionPhidget) { strcpy_s(m_szConnectionPhidget,sConnectionPhidget.toStdString().c_str()); }
+	//void setConnectionPhidget(QString sConnectionPhidget) { strcpy_s(m_szConnectionPhidget,sConnectionPhidget.toStdString().c_str()); }
 	int getRelayPort() { return m_iRelayPort; }
 	void setRelayPort(int iRelayPort) { m_iRelayPort = iRelayPort; }
 	int getStepperPort() { return m_iStepperPort; }
@@ -247,7 +247,7 @@
 	bool getAdamRelay() { return m_bAdamRelay; }
 	void setAdamRelay(bool bAdamRelay) { m_bAdamRelay = bAdamRelay; }
 	char *getAdamRelayIP() { return m_szAdamRelayIP; }
-	void setAdamRelayIP(QString sAdamRelayIP) { strcpy_s(m_szAdamRelayIP,sAdamRelayIP.toStdString().c_str()); }
+	//void setAdamRelayIP(QString sAdamRelayIP) { strcpy_s(m_szAdamRelayIP,sAdamRelayIP.toStdString().c_str()); }
 	int getAdamRelayPort() { return m_iAdamRelayPort; }
 	void setAdamRelayPort(int iAdamRelayPort) { m_iAdamRelayPort = iAdamRelayPort; }
 	int getMaxOperationTemperature() { return m_iMaxOperationTemperature; }
@@ -259,7 +259,7 @@
 	bool getSwitchPOE() { return m_bSwitchPOE; }
 	void setSwitchPOE(bool bSwitchPOE) { m_bSwitchPOE = bSwitchPOE; }
 	char *getSwitchIP() { return m_szSwitchIP; }
-	void setSwitchIP(QString sSwitchIP) { strcpy_s(m_szSwitchIP,sSwitchIP.toStdString().c_str()); }
+	//void setSwitchIP(QString sSwitchIP) { strcpy_s(m_szSwitchIP,sSwitchIP.toStdString().c_str()); }
 	int getSwitchInterface() { return m_iSwitchInterface; }
 	void setSwitchInterface(int iSwitchInterface) { m_iSwitchInterface = iSwitchInterface; }
 	void setMaintenanceMode(bool bMaintenanceMode) { m_bMaintenanceMode = bMaintenanceMode; }
@@ -336,7 +336,7 @@
 
 	EnumConfigCameraMode getConfigCameraMode() { return m_eConfigCameraMode; }
 	void setConfigCameramode(EnumConfigCameraMode eConfigCameraMode) { m_eConfigCameraMode = eConfigCameraMode; }
-	void setConnectionChain(QString sConnectionChain) { strcpy_s(m_szConnectionChain,sConnectionChain.toStdString().c_str()); }
+	//void setConnectionChain(QString sConnectionChain) { strcpy_s(m_szConnectionChain,sConnectionChain.toStdString().c_str()); }
 	bool getElectronicOld() { return m_bElectronicOld; }
 	void setElectronicOld(bool bElectronicOld) { m_bElectronicOld=bElectronicOld; }
 	char *getFuel() { return m_sFuel; }

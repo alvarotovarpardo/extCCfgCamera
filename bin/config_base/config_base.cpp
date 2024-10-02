@@ -1,4 +1,4 @@
-#include 'config_base.h'
+#include "config_base.h"
 
 CCfgClass::CCfgClass(const char *szName)
 {

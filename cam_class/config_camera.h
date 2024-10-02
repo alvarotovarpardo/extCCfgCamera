@@ -1,10 +1,5 @@
-#include "config_base.h"
-#include <vector>
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <cstring>
-#include <map>
+#include 'config_base.h'
+
 
 class extendedCCfgCamGeneral : public CCfgClass // Change name!!
 {
@@ -290,6 +285,7 @@ private:
 	int m_iTFrame;
 	int m_iTamVectorData;
 	int m_iWindowSize;
+
 
 public:
 	enum EnumConfigConnectionMode { CONFIG_CAM_CMODE_ARAVIS, CONFIG_CAM_CMODE_CCTV, CONFIG_CAM_CMODE_DMK, CONFIG_CAM_CMODE_EYECGAS, CONFIG_CAM_CMODE_FLIR_ATLAS, CONFIG_CAM_CMODE_FLIR_SPINNAKER, CONFIG_CAM_CMODE_GST, CONFIG_CAM_CMODE_NONE, CONFIG_CAM_CMODE_OPENCV, CONFIG_CAM_CMODE_PCO, CONFIG_CAM_CMODE_PLEORA, CONFIG_CAM_CMODE_SIMULATE, CONFIG_CAM_CMODE_SIMULATE_EYECGAS, CONFIG_CAM_CMODE_SIMULATE_FLIR, CONFIG_CAM_CMODE_SMART, CONFIG_CAM_CMODE_VIDEOINPUT };
@@ -612,8 +608,6 @@ public:
 	void setRegionSize(int iRegionSize) { m_iRegionSize = iRegionSize; }
 	bool getStretchingRegion() { return m_bStretchingRegion; }
 	int getRegionSize() { return m_iRegionSize; }
-	void setTourActiveAutomatic(char * szTour) { STRNCPY(m_szTourActiveAutomatic, szTour,  CFG_MAX_SMALL_ID); }
-	void setPresetActiveAutomatic(char * szPreset) { STRNCPY(m_szPresetActiveAutomatic, szPreset,  CFG_MAX_SMALL_ID); }
 	/* PRESET LIMITS */
 	void setPTLimitTiltUp(int iPTLimitTiltTop) { m_iPTLimitTiltTop = iPTLimitTiltTop; }
 	int getPTLimitTiltUp() { return m_iPTLimitTiltTop; }
@@ -626,9 +620,9 @@ public:
 	bool copyBakToCam(std::string sPathCam);
 	bool copyCamToBak(std::string sPathCam);
 
-	##################################################
-	#################### Analytics ###################
-	##################################################
+	/*##################################################
+	  ################## Analytics ###################
+	  ##################################################*/
 
 	EnumConfigCameraMode getConfigCameraMode() { return m_eConfigCameraMode; }
 	void setConfigCameramode(EnumConfigCameraMode eConfigCameraMode) { m_eConfigCameraMode = eConfigCameraMode; }
@@ -732,7 +726,7 @@ public:
 
 	/*##################################################
 	  ###################### Lite ######################
-	 ##################################################*/
+	  ##################################################*/
 
 	int getTamVectorData() { return m_iTamVectorData; }
 	void setTamVectorData(int iTamVectorData) { m_iTamVectorData = iTamVectorData; }

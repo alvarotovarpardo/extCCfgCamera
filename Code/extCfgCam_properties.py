@@ -221,7 +221,10 @@ def write_header_file():
             
     flag = 0
     with open(output_file, 'w') as file:
-        file.write("#include 'config_base.h'\n\n\n")
+        
+        # Includes
+        file.write("#include \"config_base.h\"\n")
+        file.write("#include <vector>\n\n")
         file.write("class extendedCCfgCamGeneral : public CCfgClass // Change name!!\n{\nprivate:\n")
         
         for r in range(len(programs), 0, -1):  

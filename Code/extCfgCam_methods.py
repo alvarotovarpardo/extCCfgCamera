@@ -28,6 +28,10 @@ def extractMethods():
                     line = re.sub('STRCPY','strcpy_s', line)
                 if 'STRNCPY' in line:
                     line = re.sub('STRNCPY', 'strncpy_s', line)
+                if 'CCfgCamGeneral' in line:
+                    line = re.sub('CCfgCamGeneral', 'extendedCCfgCamGeneral', line)
+                if 'QString' in line or 'QByteArray' in line or 'Jzon' in line:
+                    line = "//" + line
                 methods.append(line)
         return methods, enums
 
