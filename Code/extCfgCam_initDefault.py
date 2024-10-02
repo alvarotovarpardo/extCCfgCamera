@@ -20,7 +20,7 @@ def readParameters(file):
         parameters = []
         for line in f:
             stripped_line = line.strip()
-            
+            print(stripped_line)
             if (stripped_line.startswith("//") or
                 stripped_line.startswith("/*") or
                 stripped_line.endswith("*/") or
@@ -28,6 +28,18 @@ def readParameters(file):
                 stripped_line.startswith("}") or
                 stripped_line.startswith("{")
                 ): continue
+            
+            if 'STRCPY' in stripped_line:
+                stripped_line = re.sub('STRCPY', 'strcpy_s', stripped_line)
+            if 'STRNCPY' in stripped_line:
+                stripped_line = re.sub('STRNCPY', 'strncpy_s', stripped_line)
+            if 'Crypt' in stripped_line:
+                stripped_line = '//' + stripped_line
+            if 'QByte' in stripped_line:
+                stripped_line = '//' + stripped_line
+            if 'QString' in stripped_line:
+                stripped_line = '//' + stripped_line
+            
             if stripped_line and stripped_line not in parameters: # Evitamos duplicados
                 parameters.append(stripped_line)
     return parameters
@@ -73,8 +85,8 @@ def createInit():
     output_path = os.path.join(os.getcwd(),'bin\\cpp\\initDefault\\config_camera.cpp')
     # Escribir los parámetros únicos en el archivo de salida
     with open(output_path, 'w') as f:
-        f.write("#include 'config_camera.h'\n\n\n")
-        f.write('void CCfgCamGeneral::initDefault() // Change name!!\n{\n')
+        f.write("#include \"config_camera.h\"\n\n\n")
+        f.write('void extendedCCfgCamGeneral::initDefault() // Change name!!\n{\n')
         f.write("\n\t//################## Fix ###################\n\n")
         for param in fix_extended_params:
             f.write('\t' + param + '\n')

@@ -1,12 +1,12 @@
-#include 'config_camera.h'
+#include "config_camera.h"
 
 
-void CCfgCamGeneral::initDefault() // Change name!!
+void extendedCCfgCamGeneral::initDefault() // Change name!!
 {
 
 	//################## Fix ###################
 
-	crypto = new SimpleCrypt(Q_UINT64_C(0x0c2ad4a4acb9f023));
+	//crypto = new SimpleCrypt(Q_UINT64_C(0x0c2ad4a4acb9f023));
 	strcpy_s(m_szDescription, "");
 	m_szDescription[49] = '\0';
 	m_eConfigConnectionMode = CONFIG_CAM_CMODE_NONE;
@@ -48,7 +48,7 @@ void CCfgCamGeneral::initDefault() // Change name!!
 	m_iMatMetaDataRight = 0;
 	strcpy_s(m_szCameraModelName, "");
 	m_szCameraModelName[19] = '\0';
-	m_baPartNumber = QByteArray::fromHex("");
+	//m_baPartNumber = QByteArray::fromHex("");
 	m_ucDataBits = 0;
 	m_ucModeConvert2_8To16 = 3;
 	m_usDivConvert2_8To16 = 1;
@@ -176,31 +176,10 @@ void CCfgCamGeneral::initDefault() // Change name!!
 
 	//################## Distributed ###################
 
-	STRCPY(m_szDescription, "");
-	STRCPY (m_szConnectionChain, "");
-	STRCPY (m_szSerialNumber, "");
-	STRCPY (m_szLicense, "");
 	m_iFocalLength = 35;
 	m_iPixelPitch = 17;
-	STRCPY (m_szCCTVUsername, "");
-	STRCPY (m_szCCTVPassword, "");
-	STRCPY(m_szCameraModelName, "");
-	STRCPY(m_szRTSPUsername, "");
-	STRCPY(m_szRTSPPassword, "");
 	m_bStretchingRegion = false;
 	m_iRegionSize = 50;
-	STRCPY (m_szConnectionPhidget, "");
-	STRCPY (m_szTourActiveAutomatic, "");
-	STRCPY (m_szPresetActiveAutomatic, "");
-	STRCPY (m_szAdamRelayIP, "");
-	STRCPY (m_szSwitchIP, "");
-	STRCPY(m_szResetUnits, "");
-	STRCPY(m_szResetDateTime, "");
-	STRCPY(m_szResetPeriodicDateTime, "");
-	STRCPY(m_sGeolocation, "");
-	STRCPY(m_szPeriodicUnits, "");
-	STRCPY(m_szNextCheckTime, "");
-	STRCPY(m_szPeriodicDeleteAtTime, "00:00:00");
 	m_iPTLimitTiltTop = -1;
 	m_iPTLimitTiltBottom = -1;
 	m_iPTLimitPanLeft = -1;
@@ -212,20 +191,20 @@ void CCfgCamGeneral::initDefault() // Change name!!
 	m_eConfigCameraMode = CONFIG_MODE_OTHER;
 	m_bElectronicOld = false;
 	m_iFps = 5;
-	STRCPY(m_sFuel, "");
+	strcpy_s(m_sFuel, "");
 	m_sFuel[19] = '\0';
 	m_iFpsShow = 5;
 	m_iBuffMaxLengh = 125;
 	strcpy_s(m_szCCTVUsername, "");
 	strcpy_s(m_szCCTVPassword, "");
-	STRCPY(m_szPlaybackSpeed, "");
+	strcpy_s(m_szPlaybackSpeed, "");
 	m_szPlaybackSpeed[19] = '\0';
 	m_ucDataBits = 14;
 	m_ucModeConvert2_8To16 = 1;
 	m_usDivConvert2_8To16 = 4;
 	m_iIntegrationTime = 4000;
-	STRCPY(m_szEmail, "");
-	STRCPY(m_szEmailCC, "");
+	strcpy_s(m_szEmail, "");
+	strcpy_s(m_szEmailCC, "");
 	m_bEmailSendAll = false;
 	m_iNucSecondsBetweenAutomatic = -1;
 	m_bHasSensorTemperature = false;
@@ -289,19 +268,18 @@ void CCfgCamGeneral::initDefault() // Change name!!
 	m_dClipClaheSkip = 40;
 	m_fFactorMeanPond = 0.0;
 	m_iSecondsDelayClosedshutterImgnuc = 1;
-	STRCPY(m_szUnits, "");
-	STRCPY(m_szDistanceUnits, "m");
+	strcpy_s(m_szUnits, "");
+	strcpy_s(m_szDistanceUnits, "m");
 	m_iLeakDistance = 0;
 	m_dMaxFlowRateLimit = -1; //(382 L/min --- 15 kg/h)
 	m_dMinFlowRateLimit = -1; //(102 L/min --- 4 kg/h)
-	STRCPY(m_szTarjetGas, "");
+	strcpy_s(m_szTarjetGas, "");
 	m_dCorrectionFactor = 0.0;
-	STRCPY(m_szTemperatureUnits, "ºC");
+	strcpy_s(m_szTemperatureUnits, "ºC");
 	m_dAmbientTemperature = 0.0;
 	m_iHR = 0;
 	m_dGasTemperature = 0.0;
-	STRCPY(m_szOpticalSize, "20 mm");
-	STRCPY(m_szSensitivity, "High");
-	STRCPY(m_szDensityUnits, "g/m3");
+	strcpy_s(m_szOpticalSize, "20 mm");
+	strcpy_s(m_szDensityUnits, "g/m3");
 	m_dGasDensity = 0.0;
 }
